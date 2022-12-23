@@ -1,0 +1,174 @@
+body {
+    padding-inline: 1rem;
+    letter-spacing: 0;
+}
+
+a {
+    letter-spacing: 0.1px;
+}
+
+main {
+    margin-top: 0;
+}
+
+h1, h2 {
+    letter-spacing: 0;
+}
+
+/*==============================
+    HEADER
+==============================*/
+
+header {
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo img {
+    margin-top: 1.3rem;
+    width: 4rem;
+}
+
+header nav {
+    width: 100%;
+    flex-basis: 0;
+    margin-top: 1.6rem;
+}
+
+header ul {
+    gap: 0;
+}
+
+header li {
+    padding-block: 1.4rem;
+}
+
+Header nav a:hover::before {
+    bottom: 0;
+    top: unset;
+    border-top: 0.35rem solid var(--color-blue);
+}
+
+/*==============================
+    SEARCH SECTION
+==============================*/
+
+.search-section {
+    padding: 2.1rem 0 1.1rem;    
+}
+
+.search-form {
+    width: 100%;
+    margin-top: 2.3rem;
+}
+
+.search-form label {
+    width: 17.5%;
+}
+
+/*==============================
+    SEARCH SECTION: 
+    |__FILTERS
+==============================*/
+
+.filters {
+    display: block;
+    margin-top: 2.1rem;
+}
+
+.filter-list {
+    margin-top: 1rem;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.filter-list a  {
+    padding: 0.75rem 0.5rem;
+    flex: 40%;
+}
+
+.filter-list a {
+    font-size: clamp(66%, 3vw, 1.0625rem);
+}
+
+
+.filter-list i {
+    font-size: 1rem;
+    margin-inline: 0.3rem 0.3rem;
+}
+
+.result-infos {
+    margin-top: 2.8rem;
+}
+
+/*==============================
+    LODGING SECTION
+==============================*/
+
+.lodging-main-container,
+.lodging-popular-container {
+    padding: 1.4rem 5% 2.1rem;
+}
+
+.lodging-section {
+    margin-top: 0;
+}
+
+/*==============================
+    LODGING SECTION
+    |__ MAIN
+==============================*/
+
+.lodging-main-container {
+    background-color: white;
+}
+
+/*==============================
+    LODGING SECTION
+    |__ POPULAR
+==============================*/
+
+.lodging-popular-container {
+    order: -1;
+    margin-top: 0;
+    padding: 1.9rem 4.9% 2.9rem;       
+}
+
+
+.lodging-popular-container > div {
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.lodging-cards > a {
+    flex: 100%;
+}
+
+/*==============================
+    ACTIVITIES SECTION
+==============================*/
+
+
+.activities-section > div {
+    height: 100%;
+    flex-direction: column;
+    gap: 2rem
+}
+
+.activity {
+    height: 12.5rem;
+}
+
+
+.activities-section > h2 {
+    margin-block: 2rem 2.4rem;
+}
+
+
+/*==============================
+    FOOTER SECTION
+==============================*/
+
+footer {
+    flex-direction: column;
+}

@@ -1,0 +1,151 @@
+body {
+    padding-inline: 4.4rem;
+}
+
+main {
+    margin-top: 3.25rem;
+}
+
+/*==============================
+    HEADER
+==============================*/
+
+header nav {
+    flex-basis: 13rem;
+}
+
+header ul {
+    gap: 4rem;
+}
+
+/*==============================
+    SEARCH SECTION
+==============================*/
+
+.search-section h1 + p {
+    margin-block: 0.7rem 1.2rem;
+}
+
+.search-form {
+    width: 26.5rem;
+}
+
+.search-form label {
+    width: 12.5%;
+}
+
+.search-form input[type=search] {
+    width: 60%;
+}
+
+/*==============================
+    SEARCH SECTION: 
+    |__FILTERS
+==============================*/
+
+.filters {
+    gap: 1.1rem;
+}
+
+.filter-list a { 
+    padding: 0.65rem 0.8rem;
+}
+
+/*==============================
+    LODGING SECTION
+==============================*/
+
+.lodging-main-container, 
+.lodging-popular-container {
+    padding: 2.6rem 4.2% 2.1rem;
+}
+
+
+.lodging-section {
+    flex-direction: column;
+}
+
+.lodging-main-container {    
+    flex-basis: 100%; 
+}
+
+.lodging-popular-container {
+    flex-basis: 100%;
+    margin-top: 3.1rem;
+    padding: 2.2rem 4.2% 2.9rem;
+}
+
+/*==============================
+    LODGING SECTION
+    |__ MAIN
+==============================*/
+
+.lodging-card > div {
+    padding: 0.25rem 0.7rem;
+}
+
+.lodging-card img {
+    height: 6.8rem;
+}
+
+.lodging-card .rating {
+    bottom: 0.35rem;
+    left: 0.7rem;
+}
+
+.display-more {
+    margin-top: 2.3rem;
+}
+
+/*==============================
+    LODGING SECTION
+    |__ POPULAR
+==============================*/
+
+.lodging-popular-container > div {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: unset;
+}
+
+.lodging-popular-container a {
+    flex-basis: 31%;
+}
+
+.lodging-card-popular > div:first-child {
+    flex-basis: 40%;
+}
+
+.lodging-card-popular > div:last-child {
+    flex-basis: 60%;
+    padding: 0.5rem min(5%, 1.3rem) 0.3rem;
+}
+
+/*==============================
+    ACTIVITIES SECTION
+==============================*/
+
+.activities-section > h2 {
+    margin-block: 4.3rem 2.4rem;
+}
+
+.activities-section > div  {
+    height: 16rem;
+}
+
+.activities-section a {
+    flex-basis: min(24%, 11rem);
+}
+
+.activity div {
+    padding: 0 1rem;
+    height: 3.4rem;
+}
+
+/*==============================
+    ACTIVITIES SECTION
+==============================*/
+
+footer {
+    margin-top: 4.1rem;
+}
