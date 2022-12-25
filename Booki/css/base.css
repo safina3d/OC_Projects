@@ -5,7 +5,7 @@
     --color-light-blue: #DEEBFF;
     --color-gray: #F2F2F2;
 
-    --shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    --shadow: 0 0.125rem 0.313rem 0 rgba(0, 0, 0, 0.2);
 }
 
 html {
@@ -24,7 +24,6 @@ body {
     margin: 0 auto;
     padding-inline: 3.125rem;        
     letter-spacing: -0.0125rem;
-    -webkit-font-smoothing: always;
 }
 
 a {

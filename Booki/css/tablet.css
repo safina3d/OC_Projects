@@ -1,9 +1,5 @@
 body {
-    padding-inline: 4.4rem;
-}
-
-main {
-    margin-top: 3.25rem;
+    padding-inline: 2.2rem;
 }
 
 /*==============================
@@ -28,10 +24,6 @@ header ul {
 
 .search-form {
     width: 26.5rem;
-}
-
-.search-form label {
-    width: 12.5%;
 }
 
 .search-form input[type=search] {

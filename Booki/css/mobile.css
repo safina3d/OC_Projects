@@ -3,10 +3,6 @@ body {
     letter-spacing: 0;
 }
 
-a {
-    letter-spacing: 0.1px;
-}
-
 main {
     margin-top: 0;
 }
@@ -46,7 +42,7 @@ header li {
 Header nav a:hover::before {
     bottom: 0;
     top: unset;
-    border-top: 0.35rem solid var(--color-blue);
+    border-top: 0.188rem solid var(--color-blue);
 }
 
 /*==============================
@@ -63,9 +59,24 @@ Header nav a:hover::before {
 }
 
 .search-form label {
-    width: 17.5%;
+    width: 3.25rem;
 }
 
+.search-form button  {
+    width: 3.25rem;
+}
+
+.search-form input[type=search] {
+    width: calc(100% - 6.5rem);
+}
+
+.search-form button span {
+    display: none;
+}
+
+.search-form button i {
+    display: block;
+}
 /*==============================
     SEARCH SECTION: 
     |__FILTERS
@@ -83,14 +94,11 @@ Header nav a:hover::before {
 }
 
 .filter-list a  {
+    font-size: 90%;
     padding: 0.75rem 0.5rem;
     flex: 40%;
+    min-width: 11.75rem;
 }
-
-.filter-list a {
-    font-size: clamp(66%, 3vw, 1.0625rem);
-}
-
 
 .filter-list i {
     font-size: 1rem;
