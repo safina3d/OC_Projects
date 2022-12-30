@@ -1,0 +1,258 @@
+/*==============================
+    HEADER
+==============================*/
+
+header {
+    display: grid;
+    place-items: center;
+    height: 63px;    
+}
+
+
+.logo {
+    font-family: 'Shrikhand', cursive;
+}
+
+header .logo {    
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+
+/*==============================
+    MAIN
+    |_ Location section
+==============================*/
+
+.location-section {
+    display: grid;
+    place-items: center;
+    color: #353535;
+    background-color: #eaeaea;
+    height: 50px;
+    font-weight: bold;
+    position: relative;
+}
+
+.location-section p {
+    margin: 0;
+    font-size: 17px;
+}
+
+.location-section i {
+    margin-right: 10px;
+}
+
+.location-section::before {
+    content: '';
+    height: 4px;
+    background: linear-gradient(180deg,  #cecece 0%,  transparent 100%);
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+/*==============================
+    MAIN
+    |_ Pickup Lines section
+==============================*/
+
+.pickup-lines-section {
+    background-color: var(--color-light-gray);
+    text-align: center;
+    padding-block: 38px;
+}
+
+.pickup-lines-section h1 {  
+    padding-inline: 45px;
+    line-height: 28px;
+}
+
+.pickup-lines-section p {
+    padding-inline: 10px;
+    margin-block: 14px;
+}
+
+.pickup-lines-section a {
+    display: block;
+    width: 218px;
+    height: 50px;
+    line-height: 50px;
+    margin: 28px auto 20px;
+    font-size: 16px;
+    background: linear-gradient(180deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    border-radius: 24px;
+    color: white;
+}
+
+/*==============================
+    MAIN
+    |_ Functioning section
+==============================*/
+
+.functioning-section {
+    padding: 48px 20px;    
+}
+
+.functioning-section h2 {
+    margin-bottom: 28px;
+}
+
+.functioning-section > div {    
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    counter-reset: index;
+}
+
+.step {
+    background-color: var(--color-light-gray);
+    counter-increment: index;
+    height: 70px;    
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    position: relative;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.step::before {
+    content: counter(index);
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    left: -10px;
+    font-size: 14px;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+}
+
+.step p {
+    margin-left: 35px;
+}
+
+.step i {
+    font-size: 20px;
+    padding-right: 15px;
+}
+
+.step:last-child {
+    background-color: var(--color-highlight);
+}
+
+.step:last-child i {
+    color: var(--color-primary);
+}
+
+/*==============================
+    MAIN
+    |_ Restaurant List Section
+==============================*/
+
+.restaurant-section {
+    background-color: var(--color-light-gray);
+    margin-top: 20px;
+    padding: 54px 20px 63px;
+}
+
+.restaurant-section h2 {
+    margin-bottom: 20px;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.restaurant-list > a {
+    overflow: hidden;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);   
+    border-radius: 20px;
+    font-size: 0;
+    background: red;    
+    
+}
+
+.restaurant-card {    
+    height: 250px;
+}
+
+.restaurant-card img {
+    width: 100%;
+    height: calc(100% - 78px);
+    object-fit: cover;
+    object-position: 50% 60%;    
+}
+
+.restaurant-card-footer {
+    background: white;
+    height: 78px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 12px 22px;
+}
+
+.restaurant-card h3 {
+    font-size: 18px;
+}
+
+.restaurant-card p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.restaurant-card-footer i {
+    font-size: 24px;
+}
+
+.restaurant-card-footer i:hover {
+    cursor: pointer;
+}
+
+.restaurant-card-footer input {
+    display: none;
+}
+
+.restaurant-card-footer input:checked + i {
+    font-weight: 900;
+    background: linear-gradient(0deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/*==============================
+    FOOTER    
+==============================*/
+
+footer {
+    background-color: var(--color-dark-gray);
+    min-height: 197px;
+    padding: 22px 24px;
+}
+
+footer a {
+    color: white;
+}
+
+footer ul {
+    margin-top: 16px;
+    font-size: 16px;
+}
+
+footer li {
+    margin-bottom: 10px;
+}
+
+footer i {
+    font-size: 12px;
+    margin-right: 8px;
+}
