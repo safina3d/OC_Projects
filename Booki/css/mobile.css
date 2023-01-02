@@ -89,20 +89,20 @@ Header nav a:hover::before {
 
 .filter-list {
     margin-top: 1rem;
-    gap: 1.5rem;
-    justify-content: space-between;
+    gap: 1.5rem min(5%, 2rem);
+    flex-wrap: wrap;
 }
 
 .filter-list a  {
-    font-size: 90%;
-    padding: 0.75rem 0.5rem;
-    flex: 40%;
-    min-width: 11.75rem;
+    padding: 0.75rem 0.5rem;   
+    flex: 1;
+    min-width: 45%;
 }
 
 .filter-list i {
-    font-size: 1rem;
-    margin-inline: 0.3rem 0.3rem;
+    font-size: 160%;
+    margin-inline: 0.3rem;
+    vertical-align: middle;
 }
 
 .result-infos {
@@ -156,7 +156,6 @@ Header nav a:hover::before {
     ACTIVITIES SECTION
 ==============================*/
 
-
 .activities-section > div {
     height: 100%;
     flex-direction: column;
@@ -167,11 +166,9 @@ Header nav a:hover::before {
     height: 12.5rem;
 }
 
-
 .activities-section > h2 {
     margin-block: 2rem 2.4rem;
 }
-
 
 /*==============================
     FOOTER SECTION
