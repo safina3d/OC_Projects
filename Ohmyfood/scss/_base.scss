@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&family=Shrikhand&display=swap');
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+ 
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;	
+}
+
+body {
+    font-family: $font-family__text;
+    color: $color__text-default;
+    margin: 0 auto;    
+    min-height: 100vh;
+    font-size: px-to-rem($font-size__base);
+    max-width: 375px;
+}
+
+h1, h2 {
+    font-size: px-to-rem($font-size__title);
+    line-height: px-to-rem($font-size__title * 1.1667);
+}
+
+h3 {
+    font-size: px-to-rem($font-size__base);
+    line-height: px-to-rem($font-size__base * 1.1667);
+}
+
+ul {
+    list-style: none;    
+}
+
+a {
+    text-decoration: none;
+    color: $color__text-default;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    padding-inline: px-to-rem(20px);
+}

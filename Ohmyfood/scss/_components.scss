@@ -1,0 +1,63 @@
+// HEADER
+.header {
+    @include horizontal-vertical-center;
+    height: px_to_rem(63px);    
+
+    &__logo {
+        font-family: $font-family__brand;
+        font-size: px_to_rem(30px);
+        margin-top: px_to_rem(10px);
+    }
+}
+
+// FOOTER
+.footer {
+    background-color: $color__gray-darker;
+    padding: 22px 24px;    
+    
+    a#{&}__logo {
+        font-family: $font-family__brand;
+        font-size: 18px;
+    }
+
+    a {
+        color: white;
+        font-size: 16px;
+    }
+    
+    ul {
+        margin-top: 13px;
+        
+    }
+    
+    li {
+        margin-bottom: 5px;
+    }
+    
+    i {
+        width: 15px;
+        font-size: 12px;
+        margin-right: 5px;
+    }    
+    
+}
+
+//BUTTON
+.button {
+    $height : 50px;
+    $padding: px-to-rem($height * .45);
+    @include horizontal-vertical-center;    
+    @include add-shadow;
+    width: fit-content;
+    min-height: px-to-rem($height);    
+    font-size: px-to-rem($font-size__base--smaller);
+    padding: calc(-1vw + $padding) $padding;
+    background: get-gradient($color__purple-light, $color__purple);
+    border-radius: px-to-rem($height * .5);
+    color: white;
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+}
+

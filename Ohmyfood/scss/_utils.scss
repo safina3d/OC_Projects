@@ -1,0 +1,18 @@
+@use "sass:math";
+
+@function px-to-rem($value) {
+    @return math.div($value, 16px) + rem;
+}
+
+@function get-gradient($color-a, $color-b, $direction: "to bottom") {
+    @return linear-gradient(#{$direction}, $color-a 0%, $color-b 100%);
+}
+
+@mixin horizontal-vertical-center {
+    display: grid;
+    place-items: center;
+}
+
+@mixin add-shadow {
+    box-shadow:  0 px-to-rem(4px) px-to-rem(10px) px-to-rem(2px) rgb(0 0 0 / 20%);
+}

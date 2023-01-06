@@ -1,0 +1,195 @@
+/*==============================
+    MAIN
+    |_ Location section
+==============================*/
+
+.location-section {
+    @include horizontal-vertical-center;
+    height: px-to-rem(50px);
+    font-weight: bold;
+    font-size: px-to-rem($font-size__base--small);
+    color: $color__gray-darker;
+    background-color: $color__gray-medium;
+    position: relative;
+
+    i {
+        margin-right: px-to-rem(10px);
+    }
+
+    &::before {
+        content: '';
+        height: px-to-rem(4px);
+        background: get-gradient(#cecece, transparent);
+        position: absolute;
+        width: 100%;
+        top: 0;
+    }
+}
+
+/*==============================
+    MAIN
+    |_ Pickup Lines section
+==============================*/
+
+.pickup-lines-section {
+    @include horizontal-vertical-center;
+    background-color: $color__gray-light;
+    padding-block: px-to-rem(38px) px-to-rem(58px);
+    text-align: center;
+
+    h1 {
+        padding-inline: px-to-rem(45px);
+    }
+
+    p {
+        margin-block: px-to-rem(14px) px-to-rem(28px);
+    }
+}
+
+/*==============================
+    MAIN
+    |_ Operation section
+==============================*/
+
+.operation-section {
+    
+    padding-block: px-to-rem(48px);
+    
+    &__title {
+        margin-bottom: px-to-rem(32px);
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        font-size: px-to-rem($font-size__base--smaller);
+        gap: px-to-rem(28px);
+        counter-reset: index;        
+    }
+
+    &__step {
+        @include add-shadow;
+        position: relative;
+        background-color: $color__gray-light;
+        counter-increment: index;
+        height: px-to-rem(70px);    
+        border-radius: px-to-rem(18px);
+        margin-left: px-to-rem(10px);              
+        display: flex;
+        align-items: center;
+        
+        p {
+            margin-left: px-to-rem(35px);
+        }
+
+        i {
+            font-size: px-to-rem(20px);
+            padding-right: px-to-rem(15px);
+            color: $color__gray-dark;
+            vertical-align: bottom;
+        }
+
+        &::before {
+            $size: 24px;
+            @include horizontal-vertical-center;
+            content: counter(index);
+            background-color: $color__purple;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-size: px-to-rem($size * 0.58);
+            position: absolute;
+            left: px-to-rem($size * -.45);
+            width: px-to-rem($size);
+            height: px-to-rem($size);
+        }
+
+        &:last-child {
+            background-color: $color__purple-lighter;
+
+            i {
+                color: $color__purple;
+            }
+        }
+    }   
+}
+
+/*==============================
+    MAIN
+    |_ Restaurant list Section
+==============================*/
+
+.restaurant-section {
+    background-color: $color__gray-light;
+    margin-top: px-to-rem(20px);
+    padding-block: px-to-rem(54px) px-to-rem(63px);
+
+    &__title {
+        margin-bottom: px-to-rem(20px);
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: px-to-rem(20px);
+    }
+
+    &__card-link {
+        display: block;
+        overflow: hidden;
+        border-radius: px-to-rem(20px); 
+        @include add-shadow;   
+    }
+
+    &__card  {
+        height: px-to-rem(250px);
+        display: flex;
+        flex-direction: column;
+
+        & > img {
+            flex-basis: 68.8%;
+            overflow: hidden;
+            object-fit: cover;
+            object-position: 50% 60%; 
+        }
+
+        &-footer {
+            background: white;
+            flex-basis: 31.2% ;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: px-to-rem(16px) px-to-rem(24px) px-to-rem(16px) px-to-rem(12px);
+        }
+
+        &-name {
+            margin-bottom: px-to-rem(4px);
+        }
+
+        &-location {
+            font-size: $font-size__base--small;
+        }
+
+        &-favorite {            
+            input {
+                display: none;
+                &:checked + i {
+                    background: get-gradient($color__purple, $color__purple-light);
+                    font-weight: 900;
+                    color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                }
+            }
+
+            i {
+                font-size: px-to-rem(24px);
+                margin-top: px-to-rem(5px);
+            }
+
+            i:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
