@@ -1,0 +1,93 @@
+@include media-query(desktop) {
+
+    /*==============================
+        MAIN
+        |_ PICKUP LINES SECTION
+    ==============================*/
+
+    .pickup-lines {
+        &__title {
+            font-size: to-rem(38px);
+        }
+
+        &__subtitle {
+            margin-block: to-rem(28px) to-rem(48px);
+        }
+
+        .button {
+            min-height: 54px;
+        }
+    }
+
+    /*==============================
+        MAIN
+        |_ OPERATION SECTION
+    ==============================*/
+
+    .operation {
+        padding-block: to-rem(64px) to-rem(80px);
+
+        &__title{
+            margin-bottom: to-rem(32px);
+        }
+
+        &__container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        &__step {
+            overflow: hidden;
+
+            p {
+                margin-left: to-rem(56px);
+            }
+
+            i {
+                font-size: to-rem(24px);
+            }
+
+            &::before {
+                height: 150%;
+                font-size: to-rem(32px);
+                left: to-rem(-32px);
+                top: inherit;
+                padding-inline: min(20%, 4rem) min(15%, 4rem);
+            }
+        }
+    }
+
+    /*==============================
+        MAIN
+        |_ RESTAURANT LIST SECTION
+    ==============================*/
+
+    .restaurants {
+
+        &__title {
+            margin-bottom: to-rem(36px);
+        }
+
+        &__container {
+            gap: to-rem(32px);
+        }
+    }
+
+    .restaurant-card {
+
+        &__thumbnail {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1.618;
+        }
+
+        &__footer {
+            padding: to-rem(16px) to-rem(24px);
+
+            &__favorite {
+                @include heart-btn(28px, 3px);
+            }
+        }
+    }
+}

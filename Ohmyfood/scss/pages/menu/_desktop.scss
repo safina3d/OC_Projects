@@ -1,0 +1,17 @@
+@include media-query(desktop) {
+
+    .menu {
+        &__photo {
+            max-height: 500px;
+        }
+
+        &__container {
+            padding-inline: 40px;
+        }
+        &__dish-list {
+            grid-template-columns: repeat(auto-fill, 30%);
+            justify-content: space-between;
+        }
+    }
+
+}

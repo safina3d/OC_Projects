@@ -1,0 +1,21 @@
+@keyframes rotate {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes dish-fade-in {
+    0% {
+        transform: translateY(60px);
+    }
+    100% {
+       transform: translateY(0);
+       opacity: 1;
+    }
+}
+
+@for $i from 0 to 10 {
+    .fade-in-delay--#{$i} {
+        animation-delay:  200ms * $i;
+    }
+}

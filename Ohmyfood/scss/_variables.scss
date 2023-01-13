@@ -1,18 +1,17 @@
 // UI COLORS
-
 $color__text-default: #101010;
-    
-$color__purple: #9356DC; 
-$color__purple-light: #FF79DA; 
-$color__purple-lighter: #f5edff;
 
-$color__featured: #99E2D0;
+$color__purple: #9356DC;
+$color__purple-light: #FF79DA;
+$color__purple-lighter: #f5edff;
 
 $color__gray-light: #f7f7f7;
 $color__gray-medium: #eaeaea;
 $color__gray-dark: #7e7e7e;
 $color__gray-darker: #353535;
 
+$color__featured: #99E2D0;
+$color__featured_text: #008766;
 
 // TEXT
 $font-family__brand: "Shrikhand", cursive;
@@ -23,3 +22,25 @@ $font-size__base--small: $font-size__base - 1px;
 $font-size__base--smaller: $font-size__base - 2px;
 
 $font-size__title: 24px;
+
+$breakpoints_config: (
+        mobile: (
+                min-width: 0,
+                padding-inline: 20px,
+                fz-header: 30px,
+                fz-footer: 18px
+        ),
+        tablet: (
+                min-width: 768px,
+                padding-inline: 30px,
+                fz-header: 33px,
+                fz-footer: 20px
+        ),
+        desktop: (
+                min-width: 992px,
+                padding-inline: 40px,
+                fz-header: 36px,
+                fz-footer: 22px
+        )
+)
+

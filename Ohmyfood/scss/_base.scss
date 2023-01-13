@@ -16,18 +16,23 @@ body {
     color: $color__text-default;
     margin: 0 auto;    
     min-height: 100vh;
-    font-size: px-to-rem($font-size__base);
-    max-width: 375px;
+    font-size: to-rem($font-size__base);
+    max-width: 1400px;
 }
 
-h1, h2 {
-    font-size: px-to-rem($font-size__title);
-    line-height: px-to-rem($font-size__title * 1.1667);
+h1 {
+    font-family: $font-family__brand;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: to-rem($font-size__title);
+    line-height: to-rem($font-size__title * 1.1667);
 }
 
 h3 {
-    font-size: px-to-rem($font-size__base);
-    line-height: px-to-rem($font-size__base * 1.1667);
+    font-size: to-rem($font-size__base);
+    line-height: to-rem($font-size__base * 1.1667);
 }
 
 ul {
@@ -42,8 +47,4 @@ a {
 img {
     max-width: 100%;
     height: auto;
-}
-
-section {
-    padding-inline: px-to-rem(20px);
 }

@@ -1,0 +1,121 @@
+@include media-query(tablet) {
+
+    /*==============================
+        HEADER
+    ==============================*/
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+
+        &__location {
+            padding-inline: 0;
+            background: none;
+            width: fit-content;
+
+            &::before {
+                content: none;
+            }
+        }
+    }
+
+    /*==============================
+        MAIN
+        |_ PICKUP LINES SECTION
+    ==============================*/
+
+    .pickup-lines {
+        @include center-horizontally-and-vertically;
+        background-color: $color__gray-light;
+        padding-block: to-rem(60px);
+        text-align: center;
+
+        &__title {
+            font-size: to-rem(34px);
+        }
+
+        &__subtitle {
+            margin-block: to-rem(21px) to-rem(38px);
+        }
+
+        .button {
+            min-height: 52px;
+        }
+    }
+
+    /*==============================
+        MAIN
+        |_ OPERATION SECTION
+    ==============================*/
+
+    .operation {
+
+        padding-block: to-rem(48px) to-rem(64px);
+
+        &__title {
+            margin-bottom: to-rem(48px);
+        }
+
+        &__container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: unset;
+        }
+
+        &__step {
+            flex-basis: 31%;
+            justify-content: center;
+            padding-block: to-rem(42px);
+            border-radius: to-rem(18px);
+            margin-left: 0;
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-left: 0;
+            }
+
+            i {
+                font-size: to-rem(22px);
+                padding-right: to-rem(5px);
+            }
+
+            &::before {
+                $size: 36px;
+                width: to-rem($size);
+                height: to-rem($size);
+                font-size: to-rem($size * 0.5);
+                left: calc(50% - 0.5 * $size);
+                top: -$size * 0.5;
+            }
+        }
+    }
+
+    /*==============================
+        MAIN
+        |_ RESTAURANT LIST SECTION
+    ==============================*/
+
+    .restaurants {
+
+        &__title {
+            margin-bottom: to-rem(28px);
+        }
+
+        &__container {
+            grid-template-columns: 1fr 1fr;
+            gap: to-rem(25px);
+        }
+    }
+
+    .restaurant-card {
+        &__footer {
+            padding: to-rem(16px) to-rem(24px);
+
+            &__favorite {
+                @include heart-btn(26px, 4px);
+            }
+        }
+    }
+}

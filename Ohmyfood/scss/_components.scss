@@ -1,63 +1,77 @@
-// HEADER
-.header {
-    @include horizontal-vertical-center;
-    height: px_to_rem(63px);    
-
-    &__logo {
-        font-family: $font-family__brand;
-        font-size: px_to_rem(30px);
-        margin-top: px_to_rem(10px);
-    }
-}
-
-// FOOTER
-.footer {
-    background-color: $color__gray-darker;
-    padding: 22px 24px;    
-    
-    a#{&}__logo {
-        font-family: $font-family__brand;
-        font-size: 18px;
-    }
-
-    a {
-        color: white;
-        font-size: 16px;
-    }
-    
-    ul {
-        margin-top: 13px;
-        
-    }
-    
-    li {
-        margin-bottom: 5px;
-    }
-    
-    i {
-        width: 15px;
-        font-size: 12px;
-        margin-right: 5px;
-    }    
-    
-}
-
 //BUTTON
 .button {
-    $height : 50px;
-    $padding: px-to-rem($height * .45);
-    @include horizontal-vertical-center;    
+    $height: 50px;
+    $padding: to-rem($height * .45);
+    @include center-horizontally-and-vertically;
     @include add-shadow;
-    width: fit-content;
-    min-height: px-to-rem($height);    
-    font-size: px-to-rem($font-size__base--smaller);
-    padding: calc(-1vw + $padding) $padding;
     background: get-gradient($color__purple-light, $color__purple);
-    border-radius: px-to-rem($height * .5);
+    font-size: to-rem($font-size__base--smaller);
     color: white;
+    min-height: to-rem($height);
+    padding: calc(-1vw + 16px) $padding;
+    border-radius: to-rem($height * .8);
+    transition: filter 400ms, box-shadow 400ms;
 
     &:hover {
-        filter: brightness(1.1);
+        filter: brightness(1.05);
+        @include add-shadow(40%);
+    }
+}
+
+@mixin card-badge {
+    &::before {
+        content: "Nouveau";
+        color: $color__featured_text;
+        background-color: $color__featured;
+        position: absolute;
+        top: 14px;
+        right: 10px;
+        padding: 7px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+
+@mixin gradient-heart {
+    background: get-gradient($color__purple, $color__purple-light);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@mixin heart-btn($font-size, $offset: 0px) {
+    input {
+        display: none;
+
+        &:checked + i {
+            font-weight: 900;
+            @include gradient-heart;
+        }
+    }
+
+    i {
+        font-size: to-rem($font-size);
+        margin-top: to-rem($offset);
+        position: relative;
+
+        &::after {
+            content: "\f004";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            @include gradient-heart;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            &::after {
+                opacity: 1;
+                transition: opacity 300ms ease-out;
+            }
+        }
     }
 }
 

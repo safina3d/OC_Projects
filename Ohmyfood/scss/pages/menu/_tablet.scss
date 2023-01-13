@@ -1,0 +1,17 @@
+@include media-query(tablet) {
+
+    .menu {
+        &__photo {
+            max-height: 500px;
+        }
+
+        &__container {
+            padding-inline: 30px;
+        }
+        &__dish-list {
+            grid-template-columns: repeat(auto-fill, 45%);
+            justify-content: space-between;
+        }
+    }
+
+}

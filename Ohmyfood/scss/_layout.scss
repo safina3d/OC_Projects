@@ -1,0 +1,45 @@
+// HEADER
+@mixin header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.167em;
+
+    &__logo {
+        padding-block: .3em .2em;
+        font-size: 1em;
+    }
+}
+
+// FOOTER
+@mixin footer($font-size, $inner-padding) {
+    background-color: $color__gray-darker;
+    font-size: $font-size;
+    padding: $inner-padding $inner-padding * 1.2;
+
+    a {
+        color: white;
+        font-size: 0.9em;
+    }
+
+    ul {
+        margin-top: 0.7em;
+    }
+
+    li {
+        margin-bottom: 0.25em;
+    }
+
+    i {
+        width: 0.85em;
+        font-size: 0.8em;
+        margin-right: 1em;
+    }
+
+    & &__logo {
+        font-family: $font-family__brand;
+        font-size: 1em;
+    }
+}
+
+

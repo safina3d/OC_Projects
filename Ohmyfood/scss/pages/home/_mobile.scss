@@ -1,0 +1,180 @@
+@include media-query(mobile) {
+    /*==============================
+        HEADER
+    ==============================*/
+    .header {
+        @include header;
+        &__location {
+            @include center-horizontally-and-vertically;
+            background-color: $color__gray-medium;
+            font-size: to-rem($font-size__base--small);
+            color: $color__gray-darker;
+            font-weight: bold;
+            padding-block: to-rem(15px);
+            position: relative;
+            width: 100%;
+
+            i {
+                margin-right: to-rem(10px);
+            }
+
+            &::before {
+                content: '';
+                height: to-rem(4px);
+                background: get-gradient(#cecece, transparent);
+                position: absolute;
+                width: 100%;
+                top: 0;
+            }
+        }
+    }
+
+    /*==============================
+        MAIN
+        |_ PICKUP LINES SECTION
+    ==============================*/
+
+    .pickup-lines {
+        @include center-horizontally-and-vertically;
+        background-color: $color__gray-light;
+        padding-block: to-rem(38px) to-rem(58px);
+        text-align: center;
+
+        &__title {
+            padding-inline: to-rem(45px);
+        }
+
+        &__subtitle {
+            margin-block: to-rem(14px) to-rem(28px);
+        }
+    }
+
+    /*==============================
+        MAIN
+        |_ OPERATION SECTION
+    ==============================*/
+
+    .operation {
+
+        padding-block: to-rem(48px);
+
+        &__title {
+            margin-bottom: to-rem(32px);
+        }
+
+        &__container {
+            display: flex;
+            flex-direction: column;
+            font-size: to-rem($font-size__base--smaller);
+            gap: to-rem(28px);
+            counter-reset: index;
+        }
+
+        &__step {
+            @include add-shadow;
+            position: relative;
+            background-color: $color__gray-light;
+            counter-increment: index;
+            padding-block: to-rem(25px);
+            border-radius: to-rem(18px);
+            margin-left: to-rem(10px);
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-left: to-rem(35px);
+            }
+
+            i {
+                font-size: to-rem(20px);
+                padding-right: to-rem(15px);
+                color: $color__gray-dark;
+                vertical-align: bottom;
+            }
+
+            &::before {
+                $size: 24px;
+                @include center-horizontally-and-vertically;
+                content: counter(index);
+                width: to-rem($size);
+                height: to-rem($size);
+                font-size: to-rem($size * 0.58);
+                background-color: $color__purple;
+                border-radius: 50%;
+                position: absolute;
+                left: to-rem($size * -.45);
+                color: white;
+            }
+
+            &:last-child {
+                background-color: $color__purple-lighter;
+
+                i {
+                    color: $color__purple;
+                }
+            }
+        }
+    }
+
+
+    /*==============================
+        MAIN
+        |_ RESTAURANT LIST SECTION
+    ==============================*/
+
+    .restaurants {
+        background-color: $color__gray-light;
+        margin-top: to-rem(20px);
+        padding-block: to-rem(54px) to-rem(63px);
+
+        &__title {
+            margin-bottom: to-rem(20px);
+        }
+
+        &__container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: to-rem(17px);
+        }
+    }
+
+    .restaurant-card {
+        /*display: block;*/
+        overflow: hidden;
+        border-radius: to-rem(14px);
+        position: relative;
+        @include add-shadow;
+
+        &:nth-child(-n+2) {
+            @include card-badge;
+        }
+
+        &__thumbnail {
+            width: 100%;
+            height: to-rem(172px);
+            overflow: hidden;
+            object-fit: cover;
+            object-position: 50% 60%;
+        }
+
+        &__footer {
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: to-rem(16px) to-rem(24px) to-rem(16px) to-rem(12px);
+
+            &__name {
+                margin-bottom: to-rem(2px);
+            }
+
+            &__location {
+                font-size: $font-size__base--small;
+            }
+
+            &__favorite {
+                @include heart-btn(24px, 5px);
+            }
+        }
+    }
+}

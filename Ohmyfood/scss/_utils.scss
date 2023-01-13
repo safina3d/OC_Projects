@@ -1,18 +1,75 @@
 @use "sass:math";
+@use "variables";
 
-@function px-to-rem($value) {
-    @return math.div($value, 16px) + rem;
+//    FUNCTIONS ------------------------------------------
+
+
+// Converts pixels to rem units using 16px as the base value
+@function to-rem($value, $base_size: 16px) {
+    @return math.div($value, $base_size) + rem;
 }
 
+// Generates a linear gradient
 @function get-gradient($color-a, $color-b, $direction: "to bottom") {
     @return linear-gradient(#{$direction}, $color-a 0%, $color-b 100%);
 }
 
-@mixin horizontal-vertical-center {
+// Retrieves property value based on the breakpoints_config map
+@function get-value($breakpoint, $property) {
+    @return map-get(map-get(variables.$breakpoints_config, $breakpoint), $property);
+}
+
+//    MIXINS ------------------------------------------
+
+// Center an element horizontally and vertically mixin
+@mixin center-horizontally-and-vertically {
     display: grid;
     place-items: center;
 }
 
-@mixin add-shadow {
-    box-shadow:  0 px-to-rem(4px) px-to-rem(10px) px-to-rem(2px) rgb(0 0 0 / 20%);
+// Add a box-shadow mixin
+@mixin add-shadow($transparency: 20%) {
+    // TODO: Change values
+    box-shadow:  0 to-rem(4px) to-rem(10px) 0 rgb(0 0 0 / #{$transparency});
 }
+
+// Add a media query mixin
+@mixin media-query($breakpoint) {
+    @media screen and (min-width: get-value($breakpoint, min-width)) {
+        $inner-padding: get-value($breakpoint, padding-inline);
+        $fz-header: get-value($breakpoint, fz-header);
+        $fz-footer: get-value($breakpoint, fz-footer);
+
+        section {
+            padding-inline: $inner-padding;
+        }
+
+        .header {
+            font-size: $fz-header;
+            @if $breakpoint != mobile {
+                padding-inline: to-rem($inner-padding);
+                margin-block: to-rem($inner-padding * 0.5);
+            }
+        }
+
+        @content;
+
+        .footer {
+            @include footer($fz-footer, $inner-padding);
+        }
+    }
+}
+
+// Create keyframe animation for visibility
+@mixin animate-visiblity($animation-name, $opacity, $zindex: 0) {
+    @keyframes #{$animation-name} {
+        100% {
+            opacity: $opacity;
+            @if $zindex != 0 {
+                z-index: $zindex;
+            }
+        }
+    }
+}
+
+

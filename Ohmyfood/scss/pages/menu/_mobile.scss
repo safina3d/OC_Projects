@@ -1,0 +1,174 @@
+@include media-query(mobile) {
+    /*==============================
+        HEADER
+    ==============================*/
+    .header {
+        @include header;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+
+        &__home-link {
+            padding: 10px 15px;
+            font-size: 21px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(8px, -50%);
+        }
+    }
+
+    /*==============================
+        MAIN MENU
+    ==============================*/
+
+    .menu {
+
+        &__photo {
+            width: 100%;
+            object-fit: cover;
+            max-height: 250px;
+            position: relative;
+            z-index: -1;
+        }
+
+        &__container {
+             background: $color__gray-light;
+            //background: red;
+            padding-top: 38px;
+            margin-top: -36px;
+            /* transform: translateY(-100px); */
+            border-radius: 40px 40px 0 0;
+            padding-inline: 14px;
+        }
+
+        &__order {
+            @include center-horizontally-and-vertically;
+            padding-block: 36px 40px;
+            background: $color__gray-light;
+            .button {
+                padding-inline: 50px;
+            }
+        }
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &__title {
+                font-family: $font-family__brand;
+                font-weight: normal;
+                font-size: 28px;
+            }
+
+            &__favorite {
+                @include heart-btn(26px, -2px);
+            }
+        }
+
+        &__dish-list {
+            margin-top: 36px;
+            display: grid;
+            gap: 40px
+        }
+
+    }
+
+    .dish__container {
+        padding-inline: 0;
+
+        &__title {
+            font-size: 16px;
+            font-weight: normal;
+            text-transform: uppercase;
+            position: relative;
+
+            &::after {
+                content: '';
+                width: 40px;
+                height: 3px;
+                background: $color__featured;
+                position: absolute;
+                left: 0;
+                bottom: -5px;
+            }
+        }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 16px;
+        }
+    }
+
+    .dish {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 85% 16% auto;
+        transition: grid-template-columns 500ms cubic-bezier(0.22, 0.61, 0.36, 1);
+        cursor: pointer;
+        @include add-shadow;
+        opacity: 0;
+        animation: dish-fade-in 800ms cubic-bezier(0, 0.5, 0.5, 1) forwards;
+
+        &__description {
+            padding: 12px 0 12px 10px;
+            flex: 1;
+
+            overflow: hidden;
+            &__title {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            &__subtitle {
+                font-size: 15px;
+                margin-top: 4px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        &__price {
+            display: flex;
+            align-items: flex-end;
+            font-size: 15px;
+            padding: 11px 10px;
+            font-weight: 900;
+
+        }
+
+        &__validation {
+            @include center-horizontally-and-vertically;
+            background: $color__featured;
+            color: white;
+            font-size: 21px;
+            border-left: 2px solid darken($color__featured, 5%);
+
+        }
+
+        &:hover {
+            grid-template-columns: 67% 16% auto;
+            @include add-shadow(30%);
+            & i {
+                animation: rotate 500ms 50ms ease-out both;
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+}
