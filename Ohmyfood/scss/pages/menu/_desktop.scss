@@ -1,5 +1,4 @@
 @include media-query(desktop) {
-
     .menu {
         &__photo {
             max-height: 500px;
@@ -13,5 +12,4 @@
             justify-content: space-between;
         }
     }
-
 }

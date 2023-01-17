@@ -1,15 +1,15 @@
 //BUTTON
 .button {
     $height: 50px;
-    $padding: to-rem($height * .45);
+    $padding: $height * .45;
     @include center-horizontally-and-vertically;
     @include add-shadow;
-    background: get-gradient($color__purple-light, $color__purple);
-    font-size: to-rem($font-size__base--smaller);
+    @include add-gradient($color__purple--light, $color__purple);
+    font-size: $font-size__base--smaller;
     color: white;
-    min-height: to-rem($height);
+    min-height: $height;
     padding: calc(-1vw + 16px) $padding;
-    border-radius: to-rem($height * .8);
+    border-radius: $height * .8;
     transition: filter 400ms, box-shadow 400ms;
 
     &:hover {
@@ -33,26 +33,10 @@
     }
 }
 
-@mixin gradient-heart {
-    background: get-gradient($color__purple, $color__purple-light);
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-}
-
 @mixin heart-btn($font-size, $offset: 0px) {
-    input {
-        display: none;
-
-        &:checked + i {
-            font-weight: 900;
-            @include gradient-heart;
-        }
-    }
-
     i {
-        font-size: to-rem($font-size);
-        margin-top: to-rem($offset);
+        font-size: $font-size;
+        margin-top: $offset;
         position: relative;
 
         &::after {
@@ -61,12 +45,14 @@
             position: absolute;
             left: 0;
             opacity: 0;
-            @include gradient-heart;
+            @include add-gradient($color__purple, $color__purple--light);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
         }
 
         &:hover {
             cursor: pointer;
-
             &::after {
                 opacity: 1;
                 transition: opacity 300ms ease-out;
@@ -74,4 +60,3 @@
         }
     }
 }
-

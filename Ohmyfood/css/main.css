@@ -15,7 +15,7 @@ body {
   color: #101010;
   margin: 0 auto;
   min-height: 100vh;
-  font-size: 1.125rem;
+  font-size: 18px;
   max-width: 1400px;
 }
 
@@ -25,13 +25,13 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
-  line-height: 1.75005rem;
+  font-size: 24px;
+  line-height: 28.0008px;
 }
 
 h3 {
-  font-size: 1.125rem;
-  line-height: 1.3125375rem;
+  font-size: 18px;
+  line-height: 21.0006px;
 }
 
 ul {
@@ -51,23 +51,23 @@ img {
 .button {
   display: grid;
   place-items: center;
-  box-shadow: 0 0.25rem 0.625rem 0 rgb(0 0 0/20%);
-  background: linear-gradient(to bottom, #FF79DA 0%, #9356DC 100%);
-  font-size: 1rem;
+  box-shadow: 0 4px 10px 0 rgb(0 0 0/20%);
+  background-image: linear-gradient(to bottom, #FF79DA 0%, #9356DC 100%);
+  font-size: 16px;
   color: white;
-  min-height: 3.125rem;
-  padding: calc(-1vw + 16px) 1.40625rem;
-  border-radius: 2.5rem;
+  min-height: 50px;
+  padding: calc(-1vw + 16px) 22.5px;
+  border-radius: 40px;
   transition: filter 400ms, box-shadow 400ms;
 }
 .button:hover {
   filter: brightness(1.05);
-  box-shadow: 0 0.25rem 0.625rem 0 rgb(0 0 0/40%);
+  box-shadow: 0 4px 10px 0 rgb(0 0 0/40%);
 }
 
 main {
   opacity: 0;
-  animation: main__animate-visiblity 600ms 5400ms forwards;
+  animation: main__animate-visiblity 600ms 3200ms forwards;
 }
 @keyframes main__animate-visiblity {
   100% {
@@ -88,7 +88,7 @@ main {
   background: #f7f7f7;
   z-index: 10;
   overflow: hidden;
-  animation: loader__fade-out 600ms 5s forwards;
+  animation: loader__fade-out 600ms 3000ms forwards;
 }
 @keyframes loader__fade-out {
   100% {
@@ -139,6 +139,16 @@ main {
     text-shadow: 0 52px 0 rgba(0, 0, 0, 0.5), 0 -3px 0 #9356DC;
   }
 }
+@keyframes slide-in-horizontal {
+  0% {
+    transform: translateX(-100px) scale(0);
+  }
+}
+@keyframes slide-in-vertical {
+  0% {
+    transform: translateY(-30px) scale(0);
+  }
+}
 @media screen and (min-width: 0) {
   section {
     padding-inline: 20px;
@@ -163,20 +173,20 @@ main {
     display: grid;
     place-items: center;
     background-color: #eaeaea;
-    font-size: 1.0625rem;
+    font-size: 17px;
     color: #353535;
     font-weight: bold;
-    padding-block: 0.9375rem;
+    padding-block: 15px;
     position: relative;
     width: 100%;
   }
   .header__location i {
-    margin-right: 0.625rem;
+    margin-right: 10px;
   }
   .header__location::before {
     content: "";
-    height: 0.25rem;
-    background: linear-gradient(to bottom, #cecece 0%, transparent 100%);
+    height: 4px;
+    background-image: linear-gradient(to bottom, #cecece 0%, transparent 100%);
     position: absolute;
     width: 100%;
     top: 0;
@@ -189,49 +199,49 @@ main {
     display: grid;
     place-items: center;
     background-color: #f7f7f7;
-    padding-block: 2.375rem 3.625rem;
+    padding-block: 38px 58px;
     text-align: center;
   }
   .pickup-lines__title {
-    padding-inline: 2.8125rem;
+    padding-inline: 45px;
   }
   .pickup-lines__subtitle {
-    margin-block: 0.875rem 1.75rem;
+    margin-block: 14px 28px;
   }
   /*==============================
       MAIN
       |_ OPERATION SECTION
   ==============================*/
   .operation {
-    padding-block: 3rem;
+    padding-block: 48px;
   }
   .operation__title {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
   }
   .operation__container {
     display: flex;
     flex-direction: column;
-    font-size: 1rem;
-    gap: 1.75rem;
+    font-size: 16px;
+    gap: 28px;
     counter-reset: index;
   }
   .operation__step {
-    box-shadow: 0 0.25rem 0.625rem 0 rgb(0 0 0/20%);
+    box-shadow: 0 4px 10px 0 rgb(0 0 0/20%);
     position: relative;
     background-color: #f7f7f7;
     counter-increment: index;
-    padding-block: 1.5625rem;
-    border-radius: 1.125rem;
-    margin-left: 0.625rem;
+    padding-block: 25px;
+    border-radius: 18px;
+    margin-left: 10px;
     display: flex;
     align-items: center;
   }
   .operation__step p {
-    margin-left: 2.1875rem;
+    margin-left: 35px;
   }
   .operation__step i {
-    font-size: 1.25rem;
-    padding-right: 0.9375rem;
+    font-size: 20px;
+    padding-right: 15px;
     color: #7e7e7e;
     vertical-align: bottom;
   }
@@ -239,14 +249,15 @@ main {
     display: grid;
     place-items: center;
     content: counter(index);
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 0.87rem;
+    width: 24px;
+    height: 24px;
+    font-size: 13.92px;
     background-color: #9356DC;
     border-radius: 50%;
     position: absolute;
-    left: -0.675rem;
+    left: -10.8px;
     color: white;
+    animation: slide-in-horizontal 400ms both;
   }
   .operation__step:last-child {
     background-color: #f5edff;
@@ -254,29 +265,38 @@ main {
   .operation__step:last-child i {
     color: #9356DC;
   }
+  .operation__step:nth-child(1)::before {
+    animation-delay: 200ms;
+  }
+  .operation__step:nth-child(2)::before {
+    animation-delay: 400ms;
+  }
+  .operation__step:nth-child(3)::before {
+    animation-delay: 600ms;
+  }
   /*==============================
       MAIN
       |_ RESTAURANT LIST SECTION
   ==============================*/
   .restaurants {
     background-color: #f7f7f7;
-    margin-top: 1.25rem;
-    padding-block: 3.375rem 3.9375rem;
+    margin-top: 20px;
+    padding-block: 54px 63px;
   }
   .restaurants__title {
-    margin-bottom: 1.25rem;
+    margin-bottom: 20px;
   }
   .restaurants__container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.0625rem;
+    gap: 17px;
   }
   .restaurant-card {
-    /*display: block;*/
+    background: white;
     overflow: hidden;
-    border-radius: 0.875rem;
+    border-radius: 14px;
     position: relative;
-    box-shadow: 0 0.25rem 0.625rem 0 rgb(0 0 0/20%);
+    box-shadow: 0 4px 10px 0 rgb(0 0 0/20%);
   }
   .restaurant-card:nth-child(-n+2)::before {
     content: "Nouveau";
@@ -292,7 +312,7 @@ main {
   }
   .restaurant-card__thumbnail {
     width: 100%;
-    height: 10.75rem;
+    height: 172px;
     overflow: hidden;
     object-fit: cover;
     object-position: 50% 60%;
@@ -302,27 +322,17 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 1rem 1.5rem 1rem 0.75rem;
+    padding: 16px 24px 16px 12px;
   }
   .restaurant-card__footer__name {
-    margin-bottom: 0.125rem;
+    margin-bottom: 2px;
   }
   .restaurant-card__footer__location {
     font-size: 17px;
   }
-  .restaurant-card__footer__favorite input {
-    display: none;
-  }
-  .restaurant-card__footer__favorite input:checked + i {
-    font-weight: 900;
-    background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
   .restaurant-card__footer__favorite i {
-    font-size: 1.5rem;
-    margin-top: 0.3125rem;
+    font-size: 24px;
+    margin-top: 5px;
     position: relative;
   }
   .restaurant-card__footer__favorite i::after {
@@ -331,7 +341,7 @@ main {
     position: absolute;
     left: 0;
     opacity: 0;
-    background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
+    background-image: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -374,8 +384,8 @@ main {
   }
   .header {
     font-size: 33px;
-    padding-inline: 1.875rem;
-    margin-block: 0.9375rem;
+    padding-inline: 30px;
+    margin-block: 15px;
   }
   /*==============================
       HEADER
@@ -401,14 +411,14 @@ main {
     display: grid;
     place-items: center;
     background-color: #f7f7f7;
-    padding-block: 3.75rem;
+    padding-block: 60px;
     text-align: center;
   }
   .pickup-lines__title {
-    font-size: 2.125rem;
+    font-size: 34px;
   }
   .pickup-lines__subtitle {
-    margin-block: 1.3125rem 2.375rem;
+    margin-block: 21px 38px;
   }
   .pickup-lines .button {
     min-height: 52px;
@@ -418,10 +428,10 @@ main {
       |_ OPERATION SECTION
   ==============================*/
   .operation {
-    padding-block: 3rem 4rem;
+    padding-block: 48px 64px;
   }
   .operation__title {
-    margin-bottom: 3rem;
+    margin-bottom: 48px;
   }
   .operation__container {
     display: flex;
@@ -432,8 +442,8 @@ main {
   .operation__step {
     flex-basis: 31%;
     justify-content: center;
-    padding-block: 2.625rem;
-    border-radius: 1.125rem;
+    padding-block: 42px;
+    border-radius: 18px;
     margin-left: 0;
     display: flex;
     align-items: center;
@@ -442,43 +452,34 @@ main {
     margin-left: 0;
   }
   .operation__step i {
-    font-size: 1.375rem;
-    padding-right: 0.3125rem;
+    font-size: 22px;
+    padding-right: 5px;
   }
   .operation__step::before {
-    width: 2.25rem;
-    height: 2.25rem;
-    font-size: 1.125rem;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
     left: calc(50% - 18px);
     top: -18px;
+    animation-name: slide-in-vertical;
   }
   /*==============================
       MAIN
       |_ RESTAURANT LIST SECTION
   ==============================*/
   .restaurants__title {
-    margin-bottom: 1.75rem;
+    margin-bottom: 28px;
   }
   .restaurants__container {
     grid-template-columns: 1fr 1fr;
-    gap: 1.5625rem;
+    gap: 25px;
   }
   .restaurant-card__footer {
-    padding: 1rem 1.5rem;
-  }
-  .restaurant-card__footer__favorite input {
-    display: none;
-  }
-  .restaurant-card__footer__favorite input:checked + i {
-    font-weight: 900;
-    background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
+    padding: 16px 24px;
   }
   .restaurant-card__footer__favorite i {
-    font-size: 1.625rem;
-    margin-top: 0.25rem;
+    font-size: 26px;
+    margin-top: 4px;
     position: relative;
   }
   .restaurant-card__footer__favorite i::after {
@@ -487,7 +488,7 @@ main {
     position: absolute;
     left: 0;
     opacity: 0;
-    background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
+    background-image: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -530,18 +531,18 @@ main {
   }
   .header {
     font-size: 36px;
-    padding-inline: 2.5rem;
-    margin-block: 1.25rem;
+    padding-inline: 40px;
+    margin-block: 20px;
   }
   /*==============================
       MAIN
       |_ PICKUP LINES SECTION
   ==============================*/
   .pickup-lines__title {
-    font-size: 2.375rem;
+    font-size: 38px;
   }
   .pickup-lines__subtitle {
-    margin-block: 1.75rem 3rem;
+    margin-block: 28px 48px;
   }
   .pickup-lines .button {
     min-height: 54px;
@@ -551,10 +552,10 @@ main {
       |_ OPERATION SECTION
   ==============================*/
   .operation {
-    padding-block: 4rem 5rem;
+    padding-block: 64px 80px;
   }
   .operation__title {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
   }
   .operation__container {
     display: flex;
@@ -565,49 +566,40 @@ main {
     overflow: hidden;
   }
   .operation__step p {
-    margin-left: 3.5rem;
+    margin-left: 56px;
   }
   .operation__step i {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
   .operation__step::before {
     height: 150%;
-    font-size: 2rem;
-    left: -2rem;
+    font-size: 32px;
+    left: -32px;
     top: inherit;
-    padding-inline: min(20%, 4rem) min(15%, 4rem);
+    padding-inline: min(20%, 64px) min(13%, 64px);
+    animation-name: slide-in-horizontal;
   }
   /*==============================
       MAIN
       |_ RESTAURANT LIST SECTION
   ==============================*/
   .restaurants__title {
-    margin-bottom: 2.25rem;
+    margin-bottom: 36px;
   }
   .restaurants__container {
-    gap: 2rem;
+    gap: 32px;
   }
   .restaurant-card__thumbnail {
     width: 100%;
     height: auto;
-    aspect-ratio: 1.618;
+    aspect-ratio: 16/10;
   }
   .restaurant-card__footer {
-    padding: 1rem 1.5rem;
-  }
-  .restaurant-card__footer__favorite input {
-    display: none;
-  }
-  .restaurant-card__footer__favorite input:checked + i {
-    font-weight: 900;
-    background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
+    padding: 16px 24px;
   }
   .restaurant-card__footer__favorite i {
-    font-size: 1.75rem;
-    margin-top: 0.1875rem;
+    font-size: 28px;
+    margin-top: 3px;
     position: relative;
   }
   .restaurant-card__footer__favorite i::after {
@@ -616,7 +608,7 @@ main {
     position: absolute;
     left: 0;
     opacity: 0;
-    background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
+    background-image: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -653,5 +645,3 @@ main {
     font-size: 1em;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

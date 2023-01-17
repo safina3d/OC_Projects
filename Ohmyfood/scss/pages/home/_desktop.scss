@@ -7,11 +7,11 @@
 
     .pickup-lines {
         &__title {
-            font-size: to-rem(38px);
+            font-size: 38px;
         }
 
         &__subtitle {
-            margin-block: to-rem(28px) to-rem(48px);
+            margin-block: 28px 48px;
         }
 
         .button {
@@ -25,10 +25,10 @@
     ==============================*/
 
     .operation {
-        padding-block: to-rem(64px) to-rem(80px);
+        padding-block: 64px 80px;
 
         &__title{
-            margin-bottom: to-rem(32px);
+            margin-bottom: 32px;
         }
 
         &__container {
@@ -41,19 +41,20 @@
             overflow: hidden;
 
             p {
-                margin-left: to-rem(56px);
+                margin-left: 56px;
             }
 
             i {
-                font-size: to-rem(24px);
+                font-size: 24px;
             }
 
             &::before {
                 height: 150%;
-                font-size: to-rem(32px);
-                left: to-rem(-32px);
+                font-size: 32px;
+                left: -32px;
                 top: inherit;
-                padding-inline: min(20%, 4rem) min(15%, 4rem);
+                padding-inline: min(20%, 64px) min(13%, 64px);
+                animation-name: slide-in-horizontal;
             }
         }
     }
@@ -66,11 +67,11 @@
     .restaurants {
 
         &__title {
-            margin-bottom: to-rem(36px);
+            margin-bottom: 36px;
         }
 
         &__container {
-            gap: to-rem(32px);
+            gap: 32px;
         }
     }
 
@@ -79,11 +80,11 @@
         &__thumbnail {
             width: 100%;
             height: auto;
-            aspect-ratio: 1.618;
+            aspect-ratio: 16 / 10;
         }
 
         &__footer {
-            padding: to-rem(16px) to-rem(24px);
+            padding: 16px 24px;
 
             &__favorite {
                 @include heart-btn(28px, 3px);

@@ -26,16 +26,16 @@
 
     .pickup-lines {
         @include center-horizontally-and-vertically;
-        background-color: $color__gray-light;
-        padding-block: to-rem(60px);
+        background-color: $color__gray--light;
+        padding-block: 60px;
         text-align: center;
 
         &__title {
-            font-size: to-rem(34px);
+            font-size: 34px;
         }
 
         &__subtitle {
-            margin-block: to-rem(21px) to-rem(38px);
+            margin-block: 21px 38px;
         }
 
         .button {
@@ -50,10 +50,10 @@
 
     .operation {
 
-        padding-block: to-rem(48px) to-rem(64px);
+        padding-block: 48px 64px;
 
         &__title {
-            margin-bottom: to-rem(48px);
+            margin-bottom: 48px;
         }
 
         &__container {
@@ -66,8 +66,8 @@
         &__step {
             flex-basis: 31%;
             justify-content: center;
-            padding-block: to-rem(42px);
-            border-radius: to-rem(18px);
+            padding-block: 42px;
+            border-radius: 18px;
             margin-left: 0;
             display: flex;
             align-items: center;
@@ -77,17 +77,18 @@
             }
 
             i {
-                font-size: to-rem(22px);
-                padding-right: to-rem(5px);
+                font-size: 22px;
+                padding-right: 5px;
             }
 
             &::before {
                 $size: 36px;
-                width: to-rem($size);
-                height: to-rem($size);
-                font-size: to-rem($size * 0.5);
+                width: $size;
+                height: $size;
+                font-size: $size * 0.5;
                 left: calc(50% - 0.5 * $size);
                 top: -$size * 0.5;
+                animation-name: slide-in-vertical;
             }
         }
     }
@@ -100,19 +101,18 @@
     .restaurants {
 
         &__title {
-            margin-bottom: to-rem(28px);
+            margin-bottom: 28px;
         }
 
         &__container {
             grid-template-columns: 1fr 1fr;
-            gap: to-rem(25px);
+            gap: 25px;
         }
     }
 
     .restaurant-card {
         &__footer {
-            padding: to-rem(16px) to-rem(24px);
-
+            padding: 16px 24px;
             &__favorite {
                 @include heart-btn(26px, 4px);
             }

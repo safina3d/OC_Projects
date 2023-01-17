@@ -13,7 +13,7 @@
 
 // FOOTER
 @mixin footer($font-size, $inner-padding) {
-    background-color: $color__gray-darker;
+    background-color: $color__gray--darker;
     font-size: $font-size;
     padding: $inner-padding $inner-padding * 1.2;
 

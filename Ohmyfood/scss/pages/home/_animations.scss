@@ -3,7 +3,8 @@
 main {
     opacity: 0;
     $animation-name: main__animate-visiblity;
-    animation: $animation_name 600ms 5400ms forwards;
+    $animation-delay: $loader-animation-duration + 200ms;
+    animation: $animation_name 600ms $animation-delay forwards;
     @include animate-visiblity($animation-name, 1);
 }
 
@@ -16,20 +17,20 @@ main {
     left: 0;
     bottom: 0;
     right: 0;
-    background: $color__gray-light;
+    background: $color__gray--light;
     z-index: 10;
     overflow: hidden;
 
     // Fade out animation
     $animation-name: loader__fade-out;
-    animation: $animation-name 600ms 5s forwards;
+    animation: $animation-name 600ms $loader-animation-duration forwards;
     @include animate-visiblity($animation-name, 0, -10);
 
     &__container {
         display: flex;
         margin-top: -140px;
         p {
-            color: $color__purple-light;
+            color: $color__purple--light;
             @for $i from 0 through 7 {
                 &:nth-child(#{$i + 1}) {
                     animation: bouncing 500ms 100ms * $i alternate infinite cubic-bezier(.6, .05, .15, .95);
@@ -37,7 +38,6 @@ main {
             }
         }
     }
-
 }
 
 @keyframes bouncing {
@@ -50,5 +50,17 @@ main {
         transform: translate(0, 0) scale(0.834, 1.2);
         color: $color__featured;
         text-shadow: 0 52px 0 rgba(0, 0, 0, .5), 0 -3px 0 $color__purple;
+    }
+}
+
+@keyframes slide-in-horizontal {
+    0% {
+        transform: translateX(-100px) scale(0);
+    }
+}
+
+@keyframes slide-in-vertical {
+    0% {
+        transform: translateY(-30px) scale(0);
     }
 }

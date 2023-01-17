@@ -6,22 +6,22 @@
         @include header;
         &__location {
             @include center-horizontally-and-vertically;
-            background-color: $color__gray-medium;
-            font-size: to-rem($font-size__base--small);
-            color: $color__gray-darker;
+            background-color: $color__gray--medium;
+            font-size: $font-size__base--small;
+            color: $color__gray--darker;
             font-weight: bold;
-            padding-block: to-rem(15px);
+            padding-block: 15px;
             position: relative;
             width: 100%;
 
             i {
-                margin-right: to-rem(10px);
+                margin-right: 10px;
             }
 
             &::before {
                 content: '';
-                height: to-rem(4px);
-                background: get-gradient(#cecece, transparent);
+                height: 4px;
+                @include add-gradient(#cecece, transparent);
                 position: absolute;
                 width: 100%;
                 top: 0;
@@ -36,16 +36,16 @@
 
     .pickup-lines {
         @include center-horizontally-and-vertically;
-        background-color: $color__gray-light;
-        padding-block: to-rem(38px) to-rem(58px);
+        background-color: $color__gray--light;
+        padding-block: 38px 58px;
         text-align: center;
 
         &__title {
-            padding-inline: to-rem(45px);
+            padding-inline: 45px;
         }
 
         &__subtitle {
-            margin-block: to-rem(14px) to-rem(28px);
+            margin-block: 14px 28px;
         }
     }
 
@@ -56,39 +56,39 @@
 
     .operation {
 
-        padding-block: to-rem(48px);
+        padding-block: 48px;
 
         &__title {
-            margin-bottom: to-rem(32px);
+            margin-bottom: 32px;
         }
 
         &__container {
             display: flex;
             flex-direction: column;
-            font-size: to-rem($font-size__base--smaller);
-            gap: to-rem(28px);
+            font-size: $font-size__base--smaller;
+            gap: 28px;
             counter-reset: index;
         }
 
         &__step {
             @include add-shadow;
             position: relative;
-            background-color: $color__gray-light;
+            background-color: $color__gray--light;
             counter-increment: index;
-            padding-block: to-rem(25px);
-            border-radius: to-rem(18px);
-            margin-left: to-rem(10px);
+            padding-block: 25px;
+            border-radius: 18px;
+            margin-left: 10px;
             display: flex;
             align-items: center;
 
             p {
-                margin-left: to-rem(35px);
+                margin-left: 35px;
             }
 
             i {
-                font-size: to-rem(20px);
-                padding-right: to-rem(15px);
-                color: $color__gray-dark;
+                font-size: 20px;
+                padding-right: 15px;
+                color: $color__gray--dark;
                 vertical-align: bottom;
             }
 
@@ -96,21 +96,27 @@
                 $size: 24px;
                 @include center-horizontally-and-vertically;
                 content: counter(index);
-                width: to-rem($size);
-                height: to-rem($size);
-                font-size: to-rem($size * 0.58);
+                width: $size;
+                height: $size;
+                font-size: $size * 0.58;
                 background-color: $color__purple;
                 border-radius: 50%;
                 position: absolute;
-                left: to-rem($size * -.45);
+                left: $size * -.45;
                 color: white;
+                animation: slide-in-horizontal 400ms both;
             }
 
             &:last-child {
-                background-color: $color__purple-lighter;
-
+                background-color: $color__purple--lighter;
                 i {
                     color: $color__purple;
+                }
+            }
+
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i})::before {
+                    animation-delay: (200ms * $i);
                 }
             }
         }
@@ -123,25 +129,25 @@
     ==============================*/
 
     .restaurants {
-        background-color: $color__gray-light;
-        margin-top: to-rem(20px);
-        padding-block: to-rem(54px) to-rem(63px);
+        background-color: $color__gray--light;
+        margin-top: 20px;
+        padding-block: 54px 63px;
 
         &__title {
-            margin-bottom: to-rem(20px);
+            margin-bottom: 20px;
         }
 
         &__container {
             display: grid;
             grid-template-columns: 1fr;
-            gap: to-rem(17px);
+            gap: 17px;
         }
     }
 
     .restaurant-card {
-        /*display: block;*/
+        background: white;
         overflow: hidden;
-        border-radius: to-rem(14px);
+        border-radius: 14px;
         position: relative;
         @include add-shadow;
 
@@ -151,7 +157,7 @@
 
         &__thumbnail {
             width: 100%;
-            height: to-rem(172px);
+            height: 172px;
             overflow: hidden;
             object-fit: cover;
             object-position: 50% 60%;
@@ -162,10 +168,10 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding: to-rem(16px) to-rem(24px) to-rem(16px) to-rem(12px);
+            padding: 16px 24px 16px 12px;
 
             &__name {
-                margin-bottom: to-rem(2px);
+                margin-bottom: 2px;
             }
 
             &__location {

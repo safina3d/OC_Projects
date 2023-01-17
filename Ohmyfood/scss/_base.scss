@@ -16,7 +16,7 @@ body {
     color: $color__text-default;
     margin: 0 auto;    
     min-height: 100vh;
-    font-size: to-rem($font-size__base);
+    font-size: $font-size__base;
     max-width: 1400px;
 }
 
@@ -26,13 +26,13 @@ h1 {
 }
 
 h2 {
-    font-size: to-rem($font-size__title);
-    line-height: to-rem($font-size__title * 1.1667);
+    font-size: $font-size__title;
+    line-height: $font-size__title * 1.1667;
 }
 
 h3 {
-    font-size: to-rem($font-size__base);
-    line-height: to-rem($font-size__base * 1.1667);
+    font-size: $font-size__base;
+    line-height: $font-size__base * 1.1667;
 }
 
 ul {
