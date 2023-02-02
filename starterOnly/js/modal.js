@@ -1,6 +1,6 @@
 // DOM Elements
-const backgroundModalElement = document.querySelector(".bground");
-const modalButtonElements = document.querySelectorAll(".modal-btn");
+const modalElement = document.querySelector(".bground");
+const displayModalButtonElements = document.querySelectorAll(".modal-btn");
 const closeModalButtonElement = document.querySelector(".close");
 const burgerIconElement = document.querySelector(".icon");
 const subscriptionFormElement = document.querySelector("#subscription");
@@ -77,13 +77,13 @@ subscriptionFormElement.addEventListener("submit", e => {
 });
 
 // Make the modal container visible
-modalButtonElements.forEach((btn) =>
-    btn.addEventListener("click", () => toggleVisibility(backgroundModalElement, true))
+displayModalButtonElements.forEach((btn) =>
+    btn.addEventListener("click", () => toggleVisibility(modalElement, true))
 );
 
 // Hide the modal container using the cross icon
 closeModalButtonElement .addEventListener("click", () => {
-    toggleVisibility(backgroundModalElement, false);
+    toggleVisibility(modalElement, false);
     subscriptionFormElement.reset();
 });
 
@@ -97,6 +97,6 @@ burgerIconElement.addEventListener("click", e => {
 // Hide the modal container using the close button
 closeCongratulationButton .addEventListener("click", e => {
     toggleVisibility(congratulationModalElement , false);
-    toggleVisibility(backgroundModalElement, false);
+    toggleVisibility(modalElement, false);
     subscriptionFormElement.reset();
 });
