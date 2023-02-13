@@ -1,11 +1,12 @@
 // DOM Elements
 const modalElement = document.querySelector(".bground");
-const displayModalButtonElements = document.querySelectorAll(".modal-btn");
-const closeModalButtonElement = document.querySelector(".close");
 const burgerIconElement = document.querySelector(".icon");
+const errorMessageElements = document.querySelectorAll(".error-msg");
+const closeModalButtonElement = document.querySelector(".close");
 const subscriptionFormElement = document.querySelector("#subscription");
-const congratulationModalElement = document.querySelector(".modal-congratulation");
 const closeCongratulationButton = document.querySelector("#close-congrat-btn");
+const displayModalButtonElements = document.querySelectorAll(".modal-btn");
+const congratulationModalElement = document.querySelector(".modal-congratulation");
 
 const errorMessages = {
     first: {
@@ -32,7 +33,7 @@ const errorMessages = {
         valueMissing: "Vous devez choisir une option."
     },
     termsofuse: {
-        valueMissing: "Vous devez accepter les termes et conditions."
+        valueMissing: "Vous devez accepter les termes et conditions d'utilisation."
     }
 };
 
@@ -46,6 +47,14 @@ const getErrorElement = (inputElement) => {
     const parent = inputElement.closest(".formData");
     return parent ? parent.querySelector(".error-msg") : null;
 }
+
+/** Reset the form element and error messages */
+const closeAndResetForm = (formElement, errorMessageElements) => {
+    toggleVisibility(modalElement, false);
+    formElement.reset();
+    errorMessageElements.forEach(element => element.innerText = "");
+}
+
 
 subscriptionFormElement.addEventListener("invalid", function (event) {
     event.preventDefault();
@@ -82,9 +91,8 @@ displayModalButtonElements.forEach((btn) =>
 );
 
 // Hide the modal container using the cross icon
-closeModalButtonElement .addEventListener("click", () => {
-    toggleVisibility(modalElement, false);
-    subscriptionFormElement.reset();
+closeModalButtonElement.addEventListener("click", () => {
+    closeAndResetForm(subscriptionFormElement, errorMessageElements);
 });
 
 // Handle the menu burger icon
@@ -95,8 +103,7 @@ burgerIconElement.addEventListener("click", e => {
 });
 
 // Hide the modal container using the close button
-closeCongratulationButton .addEventListener("click", e => {
+closeCongratulationButton.addEventListener("click", e => {
     toggleVisibility(congratulationModalElement , false);
-    toggleVisibility(modalElement, false);
-    subscriptionFormElement.reset();
+    closeAndResetForm(subscriptionFormElement, errorMessageElements);
 });
