@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:host {
+    position: relative;
+    --height: 60px;
+    --width: 170px;
+    font-size: 18px;
+
+}
+
+#select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--width);
+    height: var(--height);
+    padding-inline: 16px;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#select:hover {
+    background-color: var(--color-secondary);
+    color: black;
+}
+
+#selected-item::after {
+    content: "\0025BC";
+    font-size: 12px;
+    position: absolute;
+    right: 16px;
+    top: 23px;
+}
+
+#option-list {
+    position: absolute;
+    top: var(--height);
+    left: 0;
+    z-index: 1;
+    width: var(--width);
+    background: var(--color-primary);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 5px 5px;
+    transition: all 400ms;
+}
+
+#option-list:not(.hidden) + #select #selected-item::after {
+    transform: rotate(180deg);
+}
+
+#option-list:not(.hidden) + #select {
+    border-radius: 5px 5px 0 0;
+    background-color: var(--color-secondary);
+}
+
+option {
+    height: var(--height);
+    display: flex;
+    padding-inline: 16px;
+    cursor: pointer;
+    align-content: center;
+    flex-wrap: wrap;
+    color: white;
+}
+
+option:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+option:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: black;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="modal">
+        <header class="contact__header">
+            <h2 class="contact__title">Contactez-moi</h2>
+            <img class="contact__close-icon" id="closeBtn" src="./assets/icons/close.svg" alt="Bouton Fermer modale">
+            <p class="contact__name">{name}</p>
+        </header>
+        <form class="contact__form" id="contact-form">
+            <div class="contact__form-group">
+                <label for="firstname" class="contact__label">Prénom</label>
+                <input type="text" id="firstname" name="firstname" class="contact__input">
+            </div>
+            <div class="contact__form-group">
+                <label for="lastname" class="contact__label">Nom</label>
+                <input type="text" id="lastname" name="lastname" class="contact__input">
+            </div>
+            <div class="contact__form-group">
+                <label for="email" class="contact__label">Email</label>
+                <input type="email" id="email" name="email" class="contact__input">
+            </div>
+            <div class="contact__form-group">
+                <label for="message" class="contact__label">Votre message</label>
+                <textarea name="message" id="message" class="contact__input contact__textarea"></textarea>
+            </div>
+            <button type="submit" class="contact__submit-btn">Send</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:host {  
+    text-align: center;  
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text-default);
+}
+
+.card__photo {
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.card__name {
+    font-size: 2.25rem;
+    color: var(--color-secondary);
+}
+
+.card__location {
+    font-size: 0.815rem;
+    color: var(--color-primary);
+}
+
+.card__tagline {
+    font-size: 0.65rem;
+    color: black;
+}
+
+.card__price {
+    font-size: 0.57rem;
+    color: var(--color-text-default);
+}

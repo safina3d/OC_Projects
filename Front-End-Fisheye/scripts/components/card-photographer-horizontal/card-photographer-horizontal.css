@@ -1,0 +1,104 @@
+/*@import url('https://fonts.googleapis.com/css?family=DM+Sans&display=swap');*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    background: var(--color-tertiary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card__photo {
+    max-width: 12.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+.card__name {
+    font-size: 4rem;
+    color: var(--color-secondary);
+}
+
+.card__location {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.card__tagline {
+    font-size: 1.125rem;
+    color: black;
+}
+
+.card__contact {
+    font-family: "DM Sans", sans-serif;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 70px;
+}
+
+.card__contact:hover {
+    background: var(--color-secondary);
+    color: black;
+}
+
+.card-fallback {
+    background: var(--color-tertiary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.fallback__icon {
+    font-size: 96px;
+}
+
+.fallback__message {
+    font-size: 24px;
+}
+
+.wrapper {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: -64%;
+}
+
+.card-next {
+    background: var(--color-secondary--light);
+    color: black;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+    border-radius: 5px 5px 0 0;
+    width: 376px;
+}
+
+.card__likes {
+    display: flex;
+    align-items: center;
+}
+
+.card__likes__heart-icon {
+    vertical-align: baseline;
+    height: 22px;
+    margin-left: 5px;
+}
+

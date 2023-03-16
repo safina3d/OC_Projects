@@ -1,0 +1,20 @@
+<article class="card">
+    <div>
+        <h2 class="card__name">{name}</h2>
+        <p class="card__location">{city}, {country}</p>
+        <p class="card__tagline">{tagline}</p>
+    </div>
+    <button class="card__contact" id="card__contact-btn">Contactez-moi</button>
+    <img class="card__photo" src="{idPhotosLocation}{portrait}"
+         alt="Photo de profil de {name}, photographe à {city}, {country}"/>
+</article>
+
+<div class="wrapper">
+    <article class="card-next">
+        <div class="card__likes">
+            {likesTotal}
+            <img class="card__likes__heart-icon" src="./assets/icons/heart.svg" alt="heart icon">
+        </div>
+        <div class="card__price">{price}€ / jour</div>
+    </article>
+</div>
