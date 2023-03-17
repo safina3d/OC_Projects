@@ -8,8 +8,22 @@ window.addEventListener('load', async () => {
 
     photographers.forEach(function (photographer) {
         const cardPhotographer = document.createElement('card-photographer');
-        cardPhotographer.data = {...photographer, idPhotosLocation: CONFIGURATION.idPhotosLocation};
+        cardPhotographer.data = {
+            ...photographer,
+            portrait: `${CONFIGURATION.idPhotosLocation}${photographer.portrait}`
+        }
         photographerSection.appendChild(cardPhotographer);
     });
 
 });
+
+// idPhotosLocation: CONFIGURATION.idPhotosLocation};
+// {
+//     "name": "Mimi Keel",
+//     "id": 243,
+//     "city": "London",
+//     "country": "UK",
+//     "tagline": "Voir le beau dans le quotidien",
+//     "price": 400,
+//     "portrait": "MimiKeel.jpg"
+// }

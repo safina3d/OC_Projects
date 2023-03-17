@@ -39,13 +39,13 @@ window.addEventListener('load', async () => {
             const photographerMediaList = getMediasByPhotographerId(photographerId, media);
             photographerCardEl.data = photographerObject
                 ? {...photographerObject,
-                    idPhotosLocation: CONFIGURATION.idPhotosLocation,
+                    portrait: `${CONFIGURATION.idPhotosLocation}${photographerObject.portrait}`,
                     likesTotal: sumLikes(photographerMediaList),
                     photographerMediaList
                 }
                 : null;
 
-
+            console.log(photographerObject, photographerMediaList);
             if (photographerCardEl.data) {
                 const galleryGridEl = document.querySelector("gallery-grid");
                 galleryGridEl.data = { photographerId, mediaList: photographerMediaList}
