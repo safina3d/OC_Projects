@@ -8,7 +8,6 @@ class GenericComponent extends HTMLElement {
         this._htmlFile = `${this.componentFilePath}.html`;
         this._cssFile = `${this.componentFilePath}.css`;
         this._htmlFileFallback = `${this.componentFilePath}-fallback.html`;
-        // this._updateComponent(false);
     }
     
     get htmlTemplateFile() {
@@ -30,6 +29,7 @@ class GenericComponent extends HTMLElement {
     }
 
     get componentFilePath(){
+        // Renvoie le chemin d'accès complet du fichier de composant
         const { componentName } = this.constructor;
         return new URL(`${componentName}/${componentName}`, import.meta.url).pathname;
     }
@@ -47,10 +47,25 @@ class GenericComponent extends HTMLElement {
         return this.hasAttribute("use-fallback");
     }
 
-    async _updateComponent(notifyWhenReady=true) {
-        try {
+    set useFallBackTemplate(state) {
+        this.toggleAttribute("use-fallback", state);
+        this._updateComponent();
+    }
 
-            const htmlFile = this.useFallBackTemplate && !this.data ? this._htmlFileFallback : this._htmlFile;
+    connectedCallback() {
+        this.addEventListener("componentReadyEvent", this._doWhenReady);
+    }
+
+    disconnectedCallback(){
+        this.removeEventListener("componentReadyEvent", this._doWhenReady);
+    }
+
+    async _updateComponent() {
+        try {
+            // const htmlFile = this.useFallBackTemplate && !this.data ? this._htmlFileFallback : this._htmlFile;
+
+            // Récupérer le contenu du fichier HTML et du fichier CSS
+            const htmlFile = this.useFallBackTemplate ? this._htmlFileFallback : this._htmlFile;
 
             const [html, css] = await Promise.all([
                 fetch(htmlFile).then(response => response.text()),
@@ -59,22 +74,20 @@ class GenericComponent extends HTMLElement {
 
             // Injecter le contenu HTML et le CSS dans le Shadow DOM
             this.shadowRoot.innerHTML = this.data
-                ? html.replace(/\{(\w+)\}/g, (match, property) => this.data[property] ?? "")
+                ? html.replace(/{(\w+)}/g, (match, property) => this.data[property] ?? "")
                 : html;
 
-            const style = document.createElement("style");
-            style.textContent = css;
-            this.shadowRoot.prepend(style);
+            const styleElement = document.createElement("style");
+            styleElement.textContent = css;
+            this.shadowRoot.prepend(styleElement);
 
-            if (notifyWhenReady){
-                this.dispatchEvent(new Event('componentReadyEvent'));
-            }
+            this.dispatchEvent(new Event("componentReadyEvent"));
 
         } catch (error) {
             console.error(error);
         }
     }
-    
+
 }
 
 export default GenericComponent;

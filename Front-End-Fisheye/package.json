@@ -1,0 +1,22 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "Fisheye project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye#readme",
+  "devDependencies": {
+    "eslint": "^8.36.0"
+  }
+}

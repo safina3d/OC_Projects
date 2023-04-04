@@ -1,13 +1,13 @@
 <div class="container">
-    <div class="modal">
-        <img class="controller__left-arrow" id="previous-btn" src="./assets/icons/arrow.svg" alt="left">
+    <div class="modal" id="lightbox-modal" tabindex="1" aria-label="Image en vue rapprochée">
+        <img class="controller__left-arrow" id="previous-btn" src="./assets/icons/arrow.svg" alt="Image précédente" tabindex="4">
         <section class="photo">
-            <div id="loader">Chargement en cours...</div>
-            <img id="target-image" class="photo__preview" src="{target}" alt="{title}" hidden>
-            <video id="target-video" class="photo__preview" src="{target}" controls hidden></video>
-            <p class="photo__title" id="photo-title">{title}</p>
+            <div id="loader"><span>Chargement en cours...</span></div>
+            <img id="target-image" class="photo__preview" src="{target}" alt="{title}" tabindex="2" hidden>
+            <video id="target-video" class="photo__preview" src="{target}" tabindex="2" controls hidden></video>
+            <p class="photo__title" id="photo-title" tabindex="3">{title}</p>
         </section>
-        <img class="controller__right-arrow" id="next-btn" src="./assets/icons/arrow.svg" alt="right">
-        <img class="close-icon" id="closeBtn" src="./assets/icons/close-red.svg" alt="Bouton Fermer modale">
+        <img class="controller__right-arrow" id="next-btn" src="./assets/icons/arrow.svg" alt="Image suivante" tabindex="5">
+        <img class="close-icon" id="close-btn" src="./assets/icons/close-red.svg" alt="Fermer la fenêtre de dialogue" tabindex="6">
     </div>
 </div>

@@ -1,82 +1,78 @@
-import GenericComponent from '../generic-component.js';
+import GenericComponent from "../generic-component.js";
 
 class DropDownComponent extends GenericComponent {
 
     constructor() {
         super();
-        this.tabIndex = 0;
         this.data = {};
-    }
-
-    get value() {
-        return this._value;
-    }
-
-    set value(newValue) {
-        if (newValue !== this._value){
-            this._value = newValue;
-        }
+        this.selectedValue = "likes";
     }
 
     static get componentName() {
         return "drop-down";
     }
 
-    connectedCallback(){
-        this.addEventListener('componentReadyEvent', this._doWhenReady);
+    get customSelectRootElement() {
+        return this.shadowRoot.querySelector(".custom-select");
     }
 
-    disconnectedCallback(){
-        this.removeEventListener('componentReadyEvent', this._doWhenReady);
+    get isExpanded() {
+        return this.customSelectRootElement.classList.contains("is-expanded");
     }
 
-    _doWhenReady(){
-        const selectElement = this.shadowRoot.querySelector('#select');
-        const selectedItemContainer = this.shadowRoot.querySelector('#selected-item');
-        const optionListContainer = this.shadowRoot.querySelector('#option-list');
+    set isExpanded(state) {
+        this.customSelectRootElement.classList.toggle("is-expanded", state);
+    }
 
-        this._populate(selectedItemContainer, optionListContainer);
+    _doWhenReady() {
+        const headerButtonElement = this.shadowRoot.querySelector(".cs__header");
+        const optionElements = this.shadowRoot.querySelectorAll(".cs__option");
+        const customSelectNameElement = this.shadowRoot.querySelector("#cs__display-name");
+        const optionsContainerElement = this.shadowRoot.querySelector(".cs__options-container");
 
-        selectElement.addEventListener('click', () => {
-            optionListContainer.classList.toggle("hidden");
+        const selectOption = (event) => {
+            const optionElement = event.target;
+            if (optionElement.classList.contains("cs__option")) {
+                // Mettre à jour l'élément sélectionné
+                optionElements.forEach(el => el.setAttribute("aria-selected", "false"));
+                optionsContainerElement.parentElement.setAttribute("aria-activedescendant", optionElement.id);
+                customSelectNameElement.textContent = optionElement.children[0].textContent;
+                optionElement.setAttribute("aria-selected", "true");
+                this.selectedValue = optionElement.dataset["value"];
+
+                // Fermer le menu déroulant
+                this.isExpanded = false;
+                this.dispatchEvent(new CustomEvent("change"));
+            }
+        }
+
+        // Gestion de l'événement de clic sur les options
+        optionsContainerElement.addEventListener("click", selectOption);
+
+        // Gestion de l'événement de pression de la touche "Enter" sur les options
+        optionsContainerElement.addEventListener("keydown", (event) => {
+            if (event.code === "Enter") {
+                selectOption(event);
+            }
         });
 
-    }
+        // Gestion de l'événement de clic sur le bouton d'en-tête
+        headerButtonElement.addEventListener("click", () => {
+            // Ouvrir ou fermer le menu déroulant
+            this.isExpanded = !this.isExpanded;
+            headerButtonElement.setAttribute("aria-expanded", `${this.isExpanded}`);
 
-    _populate(selectedItemContainer, optionListContainer){
-
-        const assignedNodes = this.shadowRoot
-            .querySelector('slot')
-            .assignedNodes()
-            .filter(node => node.nodeType === Node.ELEMENT_NODE);
-
-        if (assignedNodes) {
-
-            const fragment = document.createDocumentFragment();
-            // Add event listener to all option nodes
-            assignedNodes.forEach(optionNode => {
-                optionNode.addEventListener('click', () => {
-                    this._updateSelectedItem(optionNode, selectedItemContainer);
-                    optionListContainer.classList.toggle("hidden");
-                    this.dispatchEvent(new CustomEvent('change'));
-
-                });
-                fragment.appendChild(optionNode);
+            // Cacher l'option déjà sélectionnée
+            optionElements.forEach(el => {
+                if (this.selectedValue === el.dataset["value"]) {
+                    el.setAttribute("hidden", "");
+                } else {
+                    el.removeAttribute("hidden");
+                }
             });
-
-            optionListContainer.appendChild(fragment);
-
-            // Set first value as selected
-            this._updateSelectedItem(assignedNodes[0], selectedItemContainer);
-            this.dispatchEvent(new CustomEvent('change'))
-        }
+        });
     }
 
-    _updateSelectedItem(node, selectedItemContainer) {
-        this.value = node.getAttribute('value');
-        selectedItemContainer.textContent = node.textContent;
-    }
 }
-
 
 customElements.define(DropDownComponent.componentName, DropDownComponent);

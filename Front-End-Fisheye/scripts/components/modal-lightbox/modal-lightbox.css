@@ -11,7 +11,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(0.315rem);
+    backdrop-filter: blur(0.315rem);
     z-index: 10;
 }
 
@@ -24,16 +25,16 @@
 
 .modal {
     position: relative;
-    border-radius: 5px;
+    border-radius: 0.315rem;
     background-color: var(--color-tertiary);
-    padding: 35px;
+    padding: 2.2rem;
     margin: 0 auto;
-    box-shadow: 0 10px  10px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.625rem  0.625rem 0 rgba(0, 0, 0, 0.3);
     width: 75%;
     display: grid;
     align-items: center;
     justify-items: center;
-    grid-template-columns: 75px auto 75px;
+    grid-template-columns: 4.5rem auto 4.5rem;
 }
 
 .controller__right-arrow, .controller__left-arrow {
@@ -43,24 +44,29 @@
 
 .controller__left-arrow {
     transform: rotate(180deg);
+    justify-self: left;
+}
+
+.controller__right-arrow {
+    justify-self: right;
 }
 
 .close-icon {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1.25rem;
+    right: 1.25rem;
     cursor: pointer;
 }
 
 .photo__preview {
     object-fit: cover;
-    height: 800px;
+    height: 50rem;
     max-width: 100%;
-    border-radius: 5px;
+    border-radius: 0.315rem;
 }
 
 .photo__title {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: var(--color-primary);
 }
 
@@ -78,10 +84,17 @@
     display: grid;
     place-items: center;
     font-size: small;
-    color: #ffffff;
-    letter-spacing: 1px;
-    backdrop-filter: blur(10px);
+    color: black;
+    backdrop-filter: blur(0.625rem);
+    -webkit-backdrop-filter: blur(0.625rem);
     z-index: 1000;
+}
+
+#loader span {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 0.5rem 1rem;
+    border-radius: 0.315rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.15);
 }
 
 .hidden {

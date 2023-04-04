@@ -4,34 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fisheye - Photographe </title>
+    <title>Fisheye - Photographe</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="./css/photographer.css">
-    <script defer type="module" src="scripts/components/card-photographer-horizontal/card-photographer-horizontal.js"></script>
-    <script defer type="module" src="scripts/components/modal-contact/modal-contact.js"></script>
-    <script defer type="module" src="scripts/components/gallery-grid/gallery-grid.js"></script>
-    <script defer type="module" src="scripts/components/card-image/card-image.js"></script>
-    <script defer type="module" src="scripts/components/drop-down/drop-down.js"></script>
-    <script defer type="module" src="scripts/components/modal-lightbox/modal-lightbox.js"></script>
 </head>
 <body>
 
     <header>
-        <a href="index.html">
-            <img src="assets/images/logo.png" class="logo" alt="logo de Fisheye">
+        <a href="index.html" tabindex="1">
+            <img src="assets/images/logo.png" class="logo" alt="Fisheye, page d'accueil">
         </a>
     </header>
 
     <main id="main">
-        <card-photographer-horizontal></card-photographer-horizontal>
+        <photographer-horizontal-card></photographer-horizontal-card>
         <gallery-grid></gallery-grid>
-
     </main>
 
-
     <script type="module" src="/scripts/pages/photographer.js"></script>
-
 </body>
 </html>
-
-

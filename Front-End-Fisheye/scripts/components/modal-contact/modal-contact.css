@@ -11,6 +11,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     z-index: 10;
 }
@@ -34,18 +35,13 @@
 .contact__header {
     display: grid;
     grid-template-columns: 1fr auto;
-    align-items: center;
 }
 
 .contact__title {
     font-size: 54px;
     color: black;
-}
-
-.contact__name {
-    font-size: 40px;
+    font-weight: normal;
     margin-bottom: 20px;
-    color: black;
 }
 
 .contact__close-icon {

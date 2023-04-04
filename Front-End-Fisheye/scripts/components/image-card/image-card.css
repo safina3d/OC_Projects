@@ -1,24 +1,25 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
+label {
+    font-size: 0;
 }
 
 .card {
-    width: 350px;
-    height: 350px;
+    width: 21.875rem;
     display: flex;
     flex-direction: column;
 }
+
 .card__photo {
     width: 100%;
-    height: 300px;
+    height: 18.75rem;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 0.315rem;
+    cursor: pointer;
 }
 
 .card__title {
@@ -33,23 +34,26 @@ a {
     justify-content: space-between;
     align-items: center;
     color: var(--color-primary);
-    height: 50px;
-    font-size: 24px;
+    height: 3.125rem;
+    font-size: 1.5rem;
 }
 
-.card__likes-count {
+.card__likes-container {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.315rem;
 }
 
 .card__likes__heart-icon {
-    width: 21px;
-    height: 24px;
-    fill: red;
+    width: 1.315rem;
+    height: 1.5rem;
+    cursor: pointer;
 }
 
+input[type=checkbox]:not(:checked) + .card__likes__heart-icon {
+    opacity: 0.4;
+}
 
-.card__likes__heart-icon .heart-path  {
-    fill: red;
+input[type=checkbox]:checked + .card__likes__heart-icon {
+    opacity: 1;
 }

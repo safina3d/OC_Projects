@@ -1,0 +1,13 @@
+<article class="card">
+    <img class="card__photo" src="{thumbnail}" alt="{title}" data-photo-id="{id}" tabindex="1" aria-label="{title}, vue rapprochée">
+    <div class="card__footer">
+        <p class="card__title" tabindex="2">{title}</p>
+        <div class="card__likes-container" tabindex="2" aria-label="likes">
+            <p class="card__likes-count">{likes}</p>
+            <label for="checkbox{id}">
+                <input type="checkbox" id="checkbox{id}" hidden>
+                <img class="card__likes__heart-icon" src="./assets/icons/heart-red.svg" alt="likes">
+            </label>
+        </div>
+    </div>
+</article>

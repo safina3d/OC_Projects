@@ -3,8 +3,8 @@
     padding: 0;
 }
 
-:host {  
-    text-align: center;  
+:host {
+    text-align: center;
 }
 
 a {
@@ -26,16 +26,16 @@ a {
 }
 
 .card__location {
-    font-size: 0.815rem;
+    font-size: 0.85rem;
     color: var(--color-primary);
 }
 
 .card__tagline {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     color: black;
 }
 
 .card__price {
-    font-size: 0.57rem;
+    font-size: 0.6rem;
     color: var(--color-text-default);
 }

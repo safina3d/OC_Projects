@@ -7,45 +7,20 @@ class ModalLightboxComponent extends GenericComponent {
         this.data = {};
     }
 
+    static get componentName() {
+        return 'modal-lightbox';
+    }
+
     get isVisible(){
         return !this.hasAttribute('hidden');
     }
 
-    set isVisible(state){
-        state
-            ? this.removeAttribute('hidden')
-            : this.setAttribute('hidden', '');
+    set isVisible(state) {
+        this.toggleAttribute('hidden', !state);
+        if (state) {
+            this.elements.lightboxModalElement.focus();
+        }
     }
-
-    static get componentName() {
-        return "modal-lightbox";
-    }
-
-    get imageTarget(){
-        return this.shadowRoot.getElementById('target-image');
-    }
-
-    get videoTarget(){
-        return this.shadowRoot.getElementById('target-video');
-    }
-
-    get title(){
-        return this.shadowRoot.querySelector("#photo-title");
-    }
-
-    get loader(){
-        return this.shadowRoot.querySelector("#loader");
-    }
-
-    get previousButton(){
-        return this.shadowRoot.querySelector("#previous-btn");
-    }
-
-    get nextButton(){
-        return this.shadowRoot.querySelector("#next-btn");
-    }
-
-
 
     get currentCardImageElement(){
         return this._currentCardImageElement;
@@ -54,87 +29,107 @@ class ModalLightboxComponent extends GenericComponent {
     set currentCardImageElement(newValue){
         if(newValue){
             this._currentCardImageElement = newValue;
-            this._updatePreview();
+            this._updateModalContent();
         }
     }
 
-    connectedCallback(){
-        this.addEventListener('componentReadyEvent', this._doWhenReady);
-    }
-
-    disconnectedCallback(){
-        this.removeEventListener('componentReadyEvent', this._doWhenReady);
-        // this.removeEventListener('click', this._closeModal);
+    _fetchElements() {
+        this.elements = {
+            lightboxModalElement: this.shadowRoot.querySelector("#lightbox-modal"),
+            closeButtonElement : this.shadowRoot.querySelector("#close-btn"),
+            previousButtonElement : this.shadowRoot.querySelector('#previous-btn'),
+            nextButtonElement : this.shadowRoot.querySelector('#next-btn'),
+            photoTitleElement : this.shadowRoot.querySelector('#photo-title'),
+            imageTargetElement : this.shadowRoot.querySelector('#target-image'),
+            videoTargetElement : this.shadowRoot.querySelector('#target-video'),
+            loaderElement : this.shadowRoot.querySelector('#loader')
+        }
     }
 
     _doWhenReady(){
-        // Handle the close button click event
-        this.shadowRoot
-            .querySelector("#closeBtn")
-            .addEventListener('click', () => {
-                this._closeModal();
-            });
+        // Récupération des éléments du DOM
+        this._fetchElements();
+        const { previousButtonElement, nextButtonElement, closeButtonElement, lightboxModalElement } = this.elements;
+        // lightboxModalElement.focus();
 
-        // Handle the previous button click event
-        this.previousButton.addEventListener("click", () => {
-            this.currentCardImageElement = this.currentCardImageElement.previousElementSibling;
-            this._updatePreview();
-            this._updateCtrollersVisibility();
+        // Gestion de la fermeture de la fenêtre modale
+        closeButtonElement.addEventListener('click', () => this._resetModalState());
+
+        closeButtonElement.addEventListener("keydown", (event) => {
+            if (event.code === "Enter") {
+                this._resetModalState();
+            }
         });
 
-        // Handle the next button click event
-        this.nextButton.addEventListener("click", () => {
-            this.currentCardImageElement = this.currentCardImageElement.nextElementSibling;
-            this._updatePreview();
-            this._updateCtrollersVisibility();
+        previousButtonElement.addEventListener("click", () => {
+            this.currentCardImageElement = this.currentCardImageElement.previousElementSibling;
+            this._updateControllersVisibility();
+        });
 
+        nextButtonElement.addEventListener("click", () => {
+            this.currentCardImageElement = this.currentCardImageElement.nextElementSibling;
+            this._updateControllersVisibility();
+        });
+
+        // Gestion des touches fléchées gauche et droite
+        lightboxModalElement.addEventListener("keydown", (event) => {
+            if  (this.isVisible) {
+                if (event.code === 'ArrowLeft') {
+                    this.currentCardImageElement = this.currentCardImageElement.previousElementSibling;
+                    this._updateControllersVisibility();
+                } else if (event.code === 'ArrowRight') {
+                    this.currentCardImageElement = this.currentCardImageElement.nextElementSibling;
+                    this._updateControllersVisibility();
+                }
+            }
         });
     }
 
-    _updatePreview() {
+    _updateModalContent() {
         if (this.currentCardImageElement) {
+            const { imageTargetElement, videoTargetElement, photoTitleElement, loaderElement } = this.elements;
             const { target, title, isVideo } = this.currentCardImageElement.data;
-            this.loader.style.display = "grid";
+            // Afficher le loader
+            loaderElement.classList.remove("hidden");
 
-            if (isVideo) {
-                this.videoTarget.src = target;
-                this.imageTarget.removeAttribute("src");
-            } else {
-                this.imageTarget.src = target;
-                this.videoTarget.removeAttribute("src");
-            }
-
-            const updateContentVisibility = () => {
-                this.imageTarget.hidden = isVideo;
-                this.videoTarget.hidden = !isVideo;
-                this.title.textContent = title;
-                this.loader.style.display = "none";
+            const updateElementsState = () => {
+                imageTargetElement.hidden = isVideo;
+                videoTargetElement.hidden = !isVideo;
+                photoTitleElement.textContent = title;
+                loaderElement.classList.add("hidden");
+                if (!this.isVisible) {
+                    this.isVisible = true;
+                }
             };
 
-            this.imageTarget.onload = updateContentVisibility;
-            this.videoTarget.onloadedmetadata = updateContentVisibility;
-            this._updateCtrollersVisibility();
+            // Mise à jour des elements en fonction du type de contenu (image ou vidéo)
+            if (isVideo) {
+                videoTargetElement.src = target;
+                videoTargetElement.onloadedmetadata = updateElementsState;
+                imageTargetElement.removeAttribute("src");
+            } else {
+                imageTargetElement.src = target;
+                imageTargetElement.onload = updateElementsState;
+                videoTargetElement.removeAttribute("src");
+            }
+
+            // Mise à jour de la visibilité des boutons de navigation
+            this._updateControllersVisibility();
         }
     }
 
-    _closeModal(){
-        this.isVisible = false;
-        this.currentCardImageElement = null;
-        this.imageTarget.src = "";
-        this.videoTarget.src = "";
-        this.title.textContent = "";
+    _updateControllersVisibility() {
+        const {previousButtonElement, nextButtonElement} = this.elements;
+        previousButtonElement.classList.toggle("hidden", !this.currentCardImageElement.previousElementSibling);
+        nextButtonElement.classList.toggle("hidden", !this.currentCardImageElement.nextElementSibling);
     }
 
-    _updateCtrollersVisibility(){
-
-        this.currentCardImageElement.previousElementSibling
-            ? this.previousButton.classList.remove("hidden")
-            : this.previousButton.classList.add("hidden");
-
-        this.currentCardImageElement.nextElementSibling
-            ? this.nextButton.classList.remove("hidden")
-            : this.nextButton.classList.add("hidden");
-
+    _resetModalState(){
+        this.elements.imageTargetElement.src = "";
+        this.elements.videoTargetElement.src = "";
+        this.elements.photoTitleElement.textContent = "";
+        this.currentCardImageElement = null;
+        this.isVisible = false;
     }
 
 }

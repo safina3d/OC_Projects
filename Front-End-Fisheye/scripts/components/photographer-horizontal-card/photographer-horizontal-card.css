@@ -1,9 +1,7 @@
-/*@import url('https://fonts.googleapis.com/css?family=DM+Sans&display=swap');*/
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 .card {
@@ -24,6 +22,7 @@
 
 .card__name {
     font-size: 4rem;
+    font-weight: normal;
     color: var(--color-secondary);
 }
 
@@ -31,11 +30,13 @@
     font-size: 1.5rem;
     color: var(--color-primary);
     margin-bottom: 20px;
+    margin-left: 4px;
 }
 
 .card__tagline {
-    font-size: 1.125rem;
-    color: black;
+    font-size: 1.25rem;
+    color: var(--color-text-default);
+    margin-left: 4px;
 }
 
 .card__contact {
@@ -43,12 +44,12 @@
     background: var(--color-primary);
     color: white;
     border: none;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
-    padding: 12px;
-    border-radius: 5px;
+    padding: 0.75rem;
+    border-radius: 0.3125rem;
     cursor: pointer;
-    height: 70px;
+    height: 4.375rem;
 }
 
 .card__contact:hover {
@@ -65,30 +66,26 @@
     padding: 2rem;
 }
 
-.fallback__icon {
-    font-size: 96px;
+.fallback__title {
+    font-size: 6rem;
 }
 
 .fallback__message {
-    font-size: 24px;
-}
-
-.wrapper {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    right: -64%;
+    font-size: 1.5rem;
 }
 
 .card-next {
+    position: fixed;
+    bottom: 0;
+    left: 62%;
     background: var(--color-secondary--light);
     color: black;
-    font-size: 24px;
+    font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
-    padding: 10px 25px;
-    border-radius: 5px 5px 0 0;
-    width: 376px;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.3125rem 0.3125rem 0 0;
+    width: 23.5rem;
 }
 
 .card__likes {
@@ -98,7 +95,7 @@
 
 .card__likes__heart-icon {
     vertical-align: baseline;
-    height: 22px;
-    margin-left: 5px;
+    height: 1.375rem;
+    margin-left: 0.3125rem;
 }
 

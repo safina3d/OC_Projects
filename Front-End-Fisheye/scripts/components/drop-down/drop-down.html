@@ -1,7 +1,26 @@
-<div id="option-list" class="hidden">
-    <slot></slot>
-</div>
-<div id="select">
-    <span id="selected-item"></span>
-</div>
+<div class="custom-select">
+    <button type="button" class="cs__header"
+            role="button" aria-labelledby="cs__display-name"
+            aria-expanded="false" aria-haspopup="listbox"
+            aria-controls="cs__options-container" tabindex="1"
+    >
+        <span id="cs__display-name" class="cs__display-name">Popularité</span>
+        <svg viewBox="0 0 30 48" class="custom-select__arrow">
+            <path d="M0 5.64L18.32 24L0 42.36L5.64 48L30 24L5.64 0L0 5.64Z" />
+        </svg>
+    </button>
 
+    <div id="cs__options-container" class="cs__options-container" role="listbox" aria-labelledby="cs__display-name" aria-activedescendant="sort-by-popularity">
+        <div id="sort-by-popularity" class="cs__option" data-value="likes" role="option" tabindex="2" aria-selected="true">
+            <span>Popularité</span>
+        </div>
+
+        <div id="sort-by-date" class="cs__option" data-value="date" role="option" tabindex="2" aria-selected="false">
+            <span>Date</span>
+        </div>
+
+        <div id="sort-by-title" class="cs__option" data-value="title" role="option" tabindex="2" aria-selected="false">
+            <span>Titre</span>
+        </div>
+    </div>
+</div>

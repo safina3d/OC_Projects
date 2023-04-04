@@ -1,63 +1,40 @@
-import {CONFIGURATION} from "../utils/config.js";
+// Chargement des composants
+import "../components/photographer-horizontal-card/photographer-horizontal-card.js"
+import "../components/modal-contact/modal-contact.js"
+import "../components/gallery-grid/gallery-grid.js"
+import "../components/image-card/image-card.js"
+import "../components/drop-down/drop-down.js"
+import "../components/modal-lightbox/modal-lightbox.js"
 
-function getValueFromURL(parameterName) {
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
-    return params.get(parameterName);
-}
-
-async function loadDataFrom(jsonFile){
-    try {
-        const response = await fetch(jsonFile);
-        return response.json();
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-function getPhotographerObjectById(id, photographers) {
-    return photographers.find(photographer => photographer.id === id);
-}
-
-function getMediasByPhotographerId(id, mediaData) {
-    return  mediaData.filter(media => media.photographerId === id);
-}
-
-function sumLikes(mediaList) {
-    return mediaList.reduce((totalLikes, media) => totalLikes + media.likes, 0);
-}
+// Import des modules
+import { getParameterValueFromURL } from "../utils/helper.js";
+import { getPhotographerHorizontalCardData } from "../factories/photographer.js";
 
 window.addEventListener('load', async () => {
-    let photographerId = parseInt(getValueFromURL('photographer'));
+    const pageTitle = document.querySelector("title");
+    const photographerHorizontalCardEl = document.querySelector("photographer-horizontal-card");
 
-    if (!isNaN(photographerId)) {
-        const {photographers, media } = await loadDataFrom("./data/photographers.json");
+    // Récupérer l'id du photographe depuis l'URL et de ses données associées
+    const photographerId = parseInt(getParameterValueFromURL('photographer'));
+    const photographerData = await getPhotographerHorizontalCardData(photographerId);
 
-        const photographerCardEl = document.querySelector("card-photographer-horizontal");
-        if (photographerCardEl) {
-            const photographerObject = getPhotographerObjectById(photographerId, photographers);
-            const photographerMediaList = getMediasByPhotographerId(photographerId, media);
-            photographerCardEl.data = photographerObject
-                ? {...photographerObject,
-                    portrait: `${CONFIGURATION.idPhotosLocation}${photographerObject.portrait}`,
-                    likesTotal: sumLikes(photographerMediaList),
-                    photographerMediaList
-                }
-                : null;
+    if (photographerData && !isNaN(photographerId)) {
+        const galleryGridEl = document.querySelector("gallery-grid");
+        photographerHorizontalCardEl.data = photographerData.data;
+        galleryGridEl.data = { photographerId, mediaList: photographerData.medias };
 
-            console.log(photographerObject, photographerMediaList);
-            if (photographerCardEl.data) {
-                const galleryGridEl = document.querySelector("gallery-grid");
-                galleryGridEl.data = { photographerId, mediaList: photographerMediaList}
+        // Capture de l'événement "galleryGridChange" et mise à jour du nombre total de likes
+        galleryGridEl.addEventListener("galleryGridChange", (event) => {
+            event.stopPropagation();
+            photographerHorizontalCardEl.updateLikesCount(event.detail.value);
+        }, true)
 
-                // Create and insert a new form-contact component
-                const modalContactEl = document.createElement('modal-contact');
-                modalContactEl.isVisible = false;
-                photographerCardEl.insertAdjacentElement('afterend', modalContactEl);
-            } else {
-                photographerCardEl.setAttribute("use-fallback", "");
-                photographerCardEl.data = null;
-            }
-        }
+        // Mise à jour du titre de la page
+        pageTitle.textContent = `Fisheye - ${photographerData.data.name}, Photographe`;
+
+    } else {
+        // Gestion du cas où le photographerId est incorrect
+        photographerHorizontalCardEl.useFallBackTemplate = true;
+        pageTitle.textContent = "Fisheye - 404";
     }
 });

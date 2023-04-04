@@ -1,29 +1,22 @@
-import {CONFIGURATION} from "../utils/config.js";
+// Chargement des composants
+import "../components/photographer-card/photographer-card.js";
 
-window.addEventListener('load', async () => {
+// Import des modules
+import { loadDataFrom } from "../utils/helper.js";
+import { createPhotographerCardElement } from "../factories/photographer.js";
 
-    const photographerSection = document.querySelector('.photographer_section');
-    const response = await fetch("./data/photographers.json");
-    const {photographers} = await response.json();
 
-    photographers.forEach(function (photographer) {
-        const cardPhotographer = document.createElement('card-photographer');
-        cardPhotographer.data = {
-            ...photographer,
-            portrait: `${CONFIGURATION.idPhotosLocation}${photographer.portrait}`
-        }
-        photographerSection.appendChild(cardPhotographer);
+window.addEventListener("load", async () => {
+    const photographerSectionElement = document.querySelector(".photographer_section");
+    const fragment = document.createDocumentFragment();
+
+    // Chargement des données des photographes à partir du fichier JSON
+    const { photographers } = await loadDataFrom("./data/photographers.json")
+
+    photographers.forEach( photographerData => {
+        const photographerCardElement = createPhotographerCardElement(photographerData);
+        fragment.appendChild(photographerCardElement);
     });
 
+    photographerSectionElement.appendChild(fragment);
 });
-
-// idPhotosLocation: CONFIGURATION.idPhotosLocation};
-// {
-//     "name": "Mimi Keel",
-//     "id": 243,
-//     "city": "London",
-//     "country": "UK",
-//     "tagline": "Voir le beau dans le quotidien",
-//     "price": 400,
-//     "portrait": "MimiKeel.jpg"
-// }

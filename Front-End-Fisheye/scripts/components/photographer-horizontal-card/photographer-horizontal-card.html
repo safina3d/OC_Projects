@@ -1,0 +1,23 @@
+<article class="card">
+    <div>
+        <h1 class="card__name" tabindex="1">{name}</h1>
+        <div tabindex="2">
+            <p class="card__location">{city}, {country}</p>
+            <p class="card__tagline">{tagline}</p>
+        </div>
+    </div>
+    <button type="button" class="card__contact" id="card__contact-btn" tabindex="3" aria-label="Contactez-moi">
+        Contactez-moi
+    </button>
+    <img class="card__photo" src="{portrait}" alt="{name}" tabindex="4">
+</article>
+
+<article class="card-next" tabindex="5" aria-label="{totalLikes} Likes">
+    <div class="card__likes">
+        <p class="card__likes-total">{totalLikes}</p>
+        <img class="card__likes__heart-icon" src="./assets/icons/heart.svg" alt="Likes">
+    </div>
+    <div class="card__price">{price}€ / jour</div>
+</article>
+
+<modal-contact hidden></modal-contact>
