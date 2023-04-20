@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:ital,wght@0,400;1,700&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --color-blue: #3282F7;
+    --color-green: #68D9A4;
+    --color-red: #ED6454;
+    --color-main: #D04F4F;
+
+    --color-gray: #E7E7E7;
+    --color-brown: #C7BEBE;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    min-height: 100vh;
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+ul {
+    list-style: none;
+}
+

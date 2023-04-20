@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Les petits plats</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <header>
+        <img class="logo__icon" src="images/logo.svg" alt="logo les petits plats">
+        <h1 class="logo__name">Les petits plats</h1>
+    </header>
+
+    <main>
+        <section class="main-search">
+            <input type="text" id="main-search__input" class="main-search__input" placeholder="Rechercher une recette">
+            <img class="main-search__icon" src="images/icon-search.svg" alt="icone de recherche">
+        </section>
+
+
+        <section class="tag-list"></section>
+
+        <section class="section-search-criteria">
+            <div class="search-container search-container__ingredients" data-type="ingredients">
+                <input type="text" placeholder="Ingrédients" id="search-input__ingredients" class="search-input search-input__ingredients">
+                <img src="images/arrow.svg" alt="arrow" class="search-input__arrow">
+                <ul id="suggestions-ingredients" class="search-input__suggestions search__suggestions--ingredients"></ul>
+            </div>
+
+            <div class="search-container search-container__devices" data-type="devices">
+                <input type="text" placeholder="Appareils" id="search-input__devices" class="search-input search-input__devices">
+                <img src="images/arrow.svg" alt="arrow" class="search-input__arrow">
+                <ul id="suggestions-devices" class="search-input__suggestions search__suggestions--devices"></ul>
+            </div>
+
+            <div class="search-container search-container__utensils" data-type="ustensils">
+                <input type="text" placeholder="Ustensiles" id="search-input__utensils" class="search-input search-input__utensils">
+                <img src="images/arrow.svg" alt="arrow" class="search-input__arrow">
+                <ul id="suggestions-utensils" class="search-input__suggestions search__suggestions--utensils"></ul>
+            </div>
+        </section>
+
+        <section id="recipe-list" class="recipe-list">
+            <div class="loader"></div>
+        </section>
+
+    </main>
+
+    <script type="module" src="scripts/index.js"></script>
+
+</body>
+</html>
