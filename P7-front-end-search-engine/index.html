@@ -2,8 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Les petits plats</title>
     <link rel="stylesheet" href="css/index.css">
@@ -16,15 +15,15 @@
     </header>
 
     <main>
-        <section class="main-search">
+        <div class="main-search">
             <input type="text" id="main-search__input" class="main-search__input" placeholder="Rechercher une recette">
             <img class="main-search__icon" src="images/icon-search.svg" alt="icone de recherche">
-        </section>
+        </div>
 
 
-        <section class="tag-list"></section>
+        <div class="tag-list"></div>
 
-        <section class="section-search-criteria">
+        <div class="section-search-criteria">
             <div class="search-container search-container__ingredients" data-type="ingredients">
                 <input type="text" placeholder="Ingrédients" id="search-input__ingredients" class="search-input search-input__ingredients">
                 <img src="images/arrow.svg" alt="arrow" class="search-input__arrow">
@@ -42,11 +41,11 @@
                 <img src="images/arrow.svg" alt="arrow" class="search-input__arrow">
                 <ul id="suggestions-utensils" class="search-input__suggestions search__suggestions--utensils"></ul>
             </div>
-        </section>
+        </div>
 
-        <section id="recipe-list" class="recipe-list">
-            <div class="loader"></div>
-        </section>
+        <div id="recipe-list" class="recipe-list">
+            <div class="loader">↑</div>
+        </div>
 
     </main>
 

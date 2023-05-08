@@ -1,33 +1,38 @@
 export class BoyerMoore {
+
     static search(text, pattern) {
+        const textLength = text.length;
         const patternLength = pattern.length;
         const lastPatternIndex = patternLength - 1;
 
-        // Calculer la table de décalage pour chaque caractère du pattern
-        const table = new Array(256).fill(patternLength);
+        // Création du tableau des décalages
+        const offsetTable = [];
         for (let i = 0; i < lastPatternIndex; i++) {
-            table[pattern.charCodeAt(i)] = lastPatternIndex - i;
+            offsetTable[pattern.charCodeAt(i)] = lastPatternIndex - i;
         }
 
-        // Commencer la recherche en comparant les caractères de droite à gauche
-        let currentTextIndex = lastPatternIndex;
-        let currentPatternIndex = lastPatternIndex;
+        let matchFound;
+        let i = lastPatternIndex;
 
-        while (currentPatternIndex >= 0 && currentTextIndex < text.length) {
-            if (pattern[currentPatternIndex] === text[currentTextIndex]) {
-                // Si les caractères correspondent, continuer la comparaison
-                currentPatternIndex--;
-                currentTextIndex--;
-            } else {
-                // Sinon, utiliser la table de décalage pour sauter des caractères
-                const skip = table[text.charCodeAt(currentTextIndex)] || patternLength;
-                currentTextIndex += skip;
-                currentPatternIndex = lastPatternIndex;
+        while (i < textLength) {
+            matchFound = true;
+
+            // Vérification de la correspondance partielle
+            for (let j = 0; j < lastPatternIndex; j++) {
+                if (text[i - j] !== pattern[lastPatternIndex - j]) {
+                    matchFound = false;
+                    break;
+                }
             }
+
+            if (matchFound) {
+                return true;
+            }
+
+            // Mise à jour de l'index en utilisant le tableau des décalages
+            i += offsetTable[text.charCodeAt(i)] || patternLength;
         }
 
-        // Si on a trouvé une correspondance, renvoyer l'index dans le texte
-        return currentPatternIndex < 0;
+        return false;
     }
 }
-

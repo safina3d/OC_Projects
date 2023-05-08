@@ -3,8 +3,6 @@ import {
     mainSearchInputElement,
     tagInputSearchElements,
     tagSearchInputsData,
-    performMainSearch,
-    getRecipeListFilteredByTags,
     displaySearchResults,
     tagListElement
 } from "./viewModel/searchEngine.js";
@@ -45,7 +43,7 @@ Object.values(tagSearchInputsData).forEach(searchInputData => {
         })
         const isOpened = containerElement.classList.contains("search-container--open");
         updateSuggestionList(input.value, searchInputData);
-        toggleSuggestionsList(isOpened, searchInputData);
+        toggleSuggestionsList(false, searchInputData);
     });
 });
 
@@ -67,7 +65,7 @@ document.addEventListener(TAG_ADD_CLICK_EVENT, (event)=> {
 
 }, true);
 
-document.addEventListener("TAG_DELETE_CLICK_EVENT", (event)=> {
+document.addEventListener(TAG_DELETE_CLICK_EVENT, (event)=> {
     const { tagName, tagType } = event.detail;
     tagFilter.removeFilter(tagType, tagName);
 

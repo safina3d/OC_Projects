@@ -47,7 +47,7 @@ export function toggleSuggestionsList(isOpened, inputTagSearchData) {
 
     inputTagSearchData.input.placeholder = isOpened ? placeholderDefault : placeholderActive;
     suggestionElement.style.display = isOpened ? "none" : "grid";
-    containerElement.classList.toggle("search-container--open");
+    containerElement.classList.toggle("search-container--open", !isOpened);
 }
 
 
@@ -63,7 +63,7 @@ export function createTagElement(tagTypeName, tagText) {
     imgElement.src = "images/cross.svg";
     imgElement.classList.add("tag__delete");
     imgElement.addEventListener("click", () => {
-        imgElement.dispatchEvent(new CustomEvent(TAG_DELETE_CLICK_EVENT, {
+        imgElement.dispatchEvent(new CustomEvent("TAG_DELETE_CLICK_EVENT", {
             detail: {
                 tagName: tagText,
                 tagType: tagTypeName

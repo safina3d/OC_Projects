@@ -23,6 +23,7 @@ export class ReversedIndex {
     static index = {};
     static createIndex(recipes) {
         console.time("CREATE INDEX");
+        const index = ReversedIndex.index;
         recipes.forEach((recipe) => {
             const { id, name, description, ingredients } = recipe;
             const words = `${name} ${description} ${ingredients.map((i) => i.ingredient).join(" ")}`
@@ -33,10 +34,10 @@ export class ReversedIndex {
                 for (let i = 0; i < word.length; i++) {
                     for (let j = i + 1; j <= word.length; j++) {
                         const subWord = word.slice(i, j);
-                        if (!ReversedIndex.index[subWord]) {
-                            ReversedIndex.index[subWord] = [id];
-                        } else if (!ReversedIndex.index[subWord].includes(id)) {
-                            ReversedIndex.index[subWord].push(id);
+                        if (!index[subWord]) {
+                            index[subWord] = [id];
+                        } else if (!index[subWord].includes(id)) {
+                            index[subWord].push(id);
                         }
                     }
                 }

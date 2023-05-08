@@ -7,7 +7,7 @@ import { BoyerMoore } from "../algorithms/boyer-moore.js";
 import { ReversedIndex } from "../algorithms/reversed-index.js";
 
 export const tagFilter = new Filter();
-// ReversedIndex.createIndex(DataManager.data);
+
 
 export const tagSearchInputsData = {
     ingredients: {
@@ -44,37 +44,42 @@ export const tagListElement = document.querySelector(".tag-list");
 export const tagInputSearchElements = document.querySelectorAll(".search-input");
 const recipeListElement = document.querySelector('#recipe-list');
 
+// ReversedIndex.createIndex(DataManager.data);
 
 // Permet de definir l'algorithme de recherche et de renvoyer le resultat
 function getSearchResultsUsingCusomAlgorithm(data, userSearchText) {
 
-    // OLD NAIVE
+    // NAIVE CHAR BY CHAR
     return data.filter(recipe => {
-        const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`.trim().toLowerCase();
-        return NaiveOldSearch.search(text, userSearchText)
+         const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`.trim().toLowerCase();
+         return NaiveOldSearch.search(text, userSearchText)
     });
 
 
     // NAIVE
-    // return data.filter(recipe => {
-    //     const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`.trim().toLowerCase();
-    //     return NaiveSearch.search(text, userSearchText)
-    // });
-
+    /*
+    return data.filter(recipe => {
+        const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`.trim().toLowerCase();
+        return NaiveSearch.search(text, userSearchText)
+    });
+    */
 
     // AFD
-    // const automatonSearch = new AutomatonSearch(userSearchText);
-    // return data.filter(recipe => {
-    //     const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`;
-    //     return automatonSearch.search(text.toLowerCase());
-    // });
-
+    /*
+    const automatonSearch = new AutomatonSearch(userSearchText);
+    return data.filter(recipe => {
+        const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`;
+        return automatonSearch.search(text.toLowerCase());
+    });
+    */
 
     // BoyerMoore
-    // return data.filter(recipe => {
-    //     const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`.trim().toLowerCase();
-    //     return BoyerMoore.search(text, userSearchText);
-    // });
+    /*
+    return data.filter(recipe => {
+        const text = `${recipe.name} ${recipe.description} ${recipe.ingredients.map(ing => ing.ingredient).join(' ')}`.trim().toLowerCase();
+        return BoyerMoore.search(text, userSearchText);
+    });
+    */
 
     // Reversed Index
     // return ReversedIndex.search(DataManager.data, userSearchText);
@@ -82,12 +87,13 @@ function getSearchResultsUsingCusomAlgorithm(data, userSearchText) {
 }
 
 // Permet de lancer une recherche en utilisant le texte donné par l'utilisateur
-export function performMainSearch(userText="") {
+function performMainSearch(userText="") {
     let recipes = DataManager.data;
     if (tagFilter.hasFilters) {
         recipes = getRecipeListFilteredByTags(recipes);
     }
     if (userText) {
+
         console.time()
         recipes = getSearchResultsUsingCusomAlgorithm(recipes, userText.toLowerCase());
         console.timeEnd()
@@ -96,7 +102,7 @@ export function performMainSearch(userText="") {
 }
 
 // Permet d'appliquer les filtres (tags) choisis par l'utilisateur
-export function getRecipeListFilteredByTags(recipes) {
+function getRecipeListFilteredByTags(recipes) {
     return recipes.filter(recipe => {
         const ingredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase());
         const devices = [recipe.appliance.toLowerCase()];
@@ -108,7 +114,6 @@ export function getRecipeListFilteredByTags(recipes) {
             tagFilter.deviceListFilter.every(deviceFilter => devices.includes(deviceFilter)) &&
             tagFilter.ustensilListFilter.every(ustensilFilter => ustensils.includes(ustensilFilter))
         );
-
     });
 }
 
